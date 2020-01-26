@@ -1,5 +1,26 @@
-<net-header [title]="'home1'"></net-header>
-
 <ion-content>
-ds
+  <div style="padding: 1rem" class="display-flex align-items-center height-100prcnt netflix-backgroundImg">
+    <div class="container-sm">
+
+      <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+        
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text login-input-side-badges" id="basic-addon1">Net</span>
+            </div>
+            <input ngModel required type="text" name="uname" class="form-control" placeholder="User name" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group mb-3">
+            <input ngModel required type="password" name="pass" class="form-control" placeholder="Pass word" aria-label="Username" aria-describedby="basic-addon1">
+              <div class="input-group-prepend">
+                <span class="input-group-text login-input-side-badges" id="basic-addon1">Flicks</span>
+              </div>
+          </div>
+
+          <button [disabled]="loginForm.invalid" type="button" class="btn btn-dark btn-block">Login</button>
+      </form>
+
+    </div>
+  </div>
 </ion-content>

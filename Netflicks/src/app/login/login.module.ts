@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { HeaderComponent } from '../header/header.component';
+import { LoginServiceService } from './login-service.service';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { HeaderComponent } from '../header/header.component';
     IonicModule,
     LoginPageRoutingModule
   ],
-  declarations: [HeaderComponent, LoginPage]
+  declarations: [HeaderComponent, LoginPage],
+  providers: [LoginServiceService]
 })
 export class LoginPageModule {}
