@@ -16,6 +16,16 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="true">
+            <ion-item (click)="toggleTheme()">
+              <ion-icon slot="start" [name]="home"></ion-icon>
+              <ion-label>
+                Toggle Theme
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
         </ion-list>
       </ion-content>
     </ion-menu>

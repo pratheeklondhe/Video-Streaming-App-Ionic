@@ -1,18 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { LoginServiceService } from './login-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  home1 = 'fjdsjfds'
-  constructor() { }
+  constructor(private loginServiceService: LoginServiceService,
+    private router: Router) {}
 
 
 
   onSubmit(loginForm: NgForm) {
-    
+    console.log(loginForm.form.value);
+    this.loginServiceService.userLogin(loginForm.form.value).subscribe(data =>{
+      this.storeUserToken(data);
+      this.router.navigate(['/home']);
+    }, error => {
+      loginForm.reset();
+      this.loginServiceService.clearSessionStorage();
+    });
+  }
+
+  storeUserToken(data) {
+    this.loginServiceService.storeToken(data.headers.get('x-auth-token'));
   }
 
   ngOnInit() {

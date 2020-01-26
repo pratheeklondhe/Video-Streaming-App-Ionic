@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { HomePageRoutingModule } from './home-routing.module';
 
-import { LoginPage } from './login.page';
-import { LoginServiceService } from './login-service.service';
+import { HomePage } from './home.page';
 import { headermodule } from '../header/header.module';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { headermodule } from '../header/header.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    HomePageRoutingModule,
     headermodule
   ],
-  declarations: [LoginPage],
-  providers: [LoginServiceService]
+  declarations: [HomePage]
 })
-export class LoginPageModule {}
+export class HomePageModule {}
