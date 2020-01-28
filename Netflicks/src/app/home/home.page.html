@@ -1,7 +1,19 @@
 <net-header [title]="'NETFLIX'" ></net-header>
 
 <ion-content>
-  <div style="padding: 1rem" class="display-flex align-items-center height-100prcnt">
-    
+  <div class="height-100prcnt">
+    <div class="display-flex align-items-center height-10rem width-100prcnt">
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-card>
+          <h1>Slide 1</h1>
+        </ion-card>
+        <ion-card>
+          <h1>Slide 2</h1>
+        </ion-card>
+        <ion-card>
+          <h1>Slide 3</h1>
+        </ion-card>
+      </ion-slides>
+    </div>
   </div>
 </ion-content>

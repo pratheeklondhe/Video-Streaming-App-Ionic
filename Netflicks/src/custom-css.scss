@@ -2,6 +2,14 @@
     height: 100%;
 }
 
+.height-10rem{
+    height: 10rem;
+}
+
+.width-100prcnt{
+    width: 100%;
+}
+
 .width-100rem{
     width: 100rem;
 }
@@ -22,15 +30,28 @@
 
 //Dark theme
 .dark-theme{
+    // transition-duration: 2000ms !important;
+    // transition-delay: 200ms !important;
 
     ion-content{
         --background: var(--net-ion-content-background);
+        // transition: color 500ms ease-in 100ms;
     }
 
     ion-toolbar{
         --background: var(--net-ion-toolbar-background);
         --color: var(--net-netflix-red-color);
         box-shadow: var(--net-toolabr-shadow);
+        transition: all 500ms ease-in 100ms;
+        // transition-duration: 1s;
+    }
+    
+    ion-item {
+        --background: var(--net-ion-content-background);
+        --color: var(--net-netflix-red-color);
+        --background-focused: var(--ion-item-background-focused,var(--ion-color-step-10,#dc353c));
+        --background-hover: var(--ion-item-background-hover,#393536);
+        // transition: all 500ms ease-in 100ms;
     }
 }
 

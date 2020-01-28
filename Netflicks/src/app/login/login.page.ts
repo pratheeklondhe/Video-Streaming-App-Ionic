@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
     console.log(loginForm.form.value);
     this.loginServiceService.userLogin(loginForm.form.value).subscribe(data =>{
       this.storeUserToken(data);
+      // this.test();
       this.router.navigate(['/home']);
     }, error => {
       loginForm.reset();
@@ -26,6 +27,12 @@ export class LoginPage implements OnInit {
 
   storeUserToken(data) {
     this.loginServiceService.storeToken(data.headers.get('x-auth-token'));
+  }
+
+  test() {
+    this.loginServiceService.test().subscribe(data => {
+
+    })
   }
 
   ngOnInit() {
