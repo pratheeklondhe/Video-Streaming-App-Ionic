@@ -11,7 +11,7 @@
     <ng-template #content>
       <ion-slide *ngFor="let genre of genreList">
     
-        <ion-card class="slide-card">
+        <ion-card class="slide-card" (click)="cardClicked(genre)">
           <img [src]="genre?.displayImg"/>
           </ion-card>
     

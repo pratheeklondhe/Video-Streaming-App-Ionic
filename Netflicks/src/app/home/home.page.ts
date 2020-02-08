@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { HomepageInitial } from './entity/initial-entity';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,13 +12,7 @@ export class HomePage implements OnInit {
 
   homepageInitial: HomepageInitial = new HomepageInitial();
   numbers = [1,2,3,4,5,6,7,8];
-  constructor(private homeService: HomeService) {
-    this.getInitialData();
-
-    window.addEventListener('orientationchange', function() {
-      console.log(window.orientation);
-      }, false);
-    
+  constructor(private homeService: HomeService, private router: Router) {
    }
 
    getInitialData() {
@@ -31,15 +26,13 @@ export class HomePage implements OnInit {
    }
 
   ngOnInit() {
+    this.getInitialData();   
   }
 
-  checkScreen(){
-    console.log(window.innerWidth);
-    if(window.innerWidth>=960){
-        return 2.125;
-    }else{
-        return 1.125;
-    }
-}
+  genreSelected(navigationExtras: NavigationExtras) {
+    console.log(navigationExtras);
+    // NavigationExtras
+    this.router.navigate(['/genre'], navigationExtras);
+  }
 
 }

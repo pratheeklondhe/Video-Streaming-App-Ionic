@@ -1,18 +1,25 @@
 <net-header [title]="'NETFLIX'" ></net-header>
 
-<ion-content (ionChange)="checkScreen()">
+<ion-content>
 
 
     <net-genre-slider
       [title] = "'Trending'"
-      [genreList] = "homepageInitial.TRENDING"></net-genre-slider>
+      [genreList] = "homepageInitial.TRENDING"
+      (genreSelected) = "genreSelected($event)"
+      ></net-genre-slider>
 
       <net-genre-slider
       [title] = "'Adventure'"
-      [genreList] = "homepageInitial.ADVENTURE"></net-genre-slider>
+      [genreList] = "homepageInitial.ADVENTURE"
+      (genreSelected) = "genreSelected($event)"></net-genre-slider>
 
       <net-genre-slider
       [title] = "'Adventure'"
-      [genreList] = "homepageInitial.ADVENTURE"></net-genre-slider>
+      [genreList] = "homepageInitial.ADVENTURE"
+      (genreSelected) = "genreSelected($event)"></net-genre-slider>
+
+    IAM GOD
+
 
 </ion-content>

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GenreObj } from 'src/app/home/entity/initial-entity';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'net-genre-slider',
@@ -10,6 +11,8 @@ export class GenreSliderComponent implements OnInit {
 
   @Input() title: string;
   @Input() genreList: GenreObj[] = [];
+  @Output() genreSelected: EventEmitter<NavigationExtras> = new EventEmitter<NavigationExtras>();
+
   skeletonList = [1,2,3,4,5,6,7,8];
   sliderOpts = {
     // spaceBetween: 0,
@@ -61,5 +64,14 @@ export class GenreSliderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
+
+  cardClicked(genre: GenreObj) {
+    const navigationExtras: NavigationExtras = {
+      state: {
+        genre: genre
+      }
+    }
+    this.genreSelected.emit(navigationExtras);
+  }
 
 }

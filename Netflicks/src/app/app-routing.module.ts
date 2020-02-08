@@ -11,12 +11,19 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    // loadChildren: './home/home.module#HomePageModule'
+  },
+  {
+    path: 'genre',
+    loadChildren: () => import('./individual-genre/individual-genre.module').then( m => m.IndividualGenrePageModule)
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes
+      // , { preloadingStrategy: PreloadAllModules }
+      )
   ],
   exports: [RouterModule]
 })
