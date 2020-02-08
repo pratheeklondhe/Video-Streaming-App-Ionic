@@ -53,6 +53,10 @@
         --background-hover: var(--ion-item-background-hover,#393536);
         // transition: all 500ms ease-in 100ms;
     }
+
+    ion-text {
+        color: var(--ion-color-light);
+    }
 }
 
 

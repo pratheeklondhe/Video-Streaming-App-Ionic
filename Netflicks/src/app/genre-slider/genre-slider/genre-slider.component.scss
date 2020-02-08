@@ -1,0 +1,39 @@
+
+.slide-card {
+    height: inherit;
+    max-width: 10rem;
+    min-height: 10rem;
+    max-height: 10rem;
+    img {
+        height: -webkit-fill-available;
+    }
+}
+
+.slider-row {
+    margin-top: 0.7rem;
+    margin-bottom: -0.7rem;
+}
+
+.slider-col {
+    margin-left: 0.7rem;
+}
+
+.slider-text {
+    font-size: large;
+    font-weight: 900;
+    margin-left: 0.2rem;
+}
+
+ion-slide {
+    transition-duration: 1s;
+    transition-delay: 800ms;
+
+    transition-timing-function: linear;
+    img {
+        // transition-duration: 400ms;
+        transition-duration: 1s;
+        transition-delay: 800ms;
+    transition-timing-function: linear;
+
+    }
+}

@@ -1,0 +1,31 @@
+<div> 
+  <ion-row class="ion-no-padding slider-row">
+    <ion-col class="ion-align-self-center ion-text-left ion-no-padding slider-col">
+       <ion-text class="slider-text">
+        {{ title }}
+        </ion-text>
+    </ion-col>
+  </ion-row>
+<ion-slides [options]="sliderOpts">
+  <div *ngIf="genreList && genreList.length;then content else skeleton"></div>
+    <ng-template #content>
+      <ion-slide *ngFor="let genre of genreList">
+    
+        <ion-card class="slide-card">
+          <img [src]="genre?.displayImg"/>
+          </ion-card>
+    
+      </ion-slide>
+    </ng-template>
+
+    <ng-template #skeleton>
+      <ion-slide *ngFor="let genre of skeletonList">    
+        <ion-card class="slide-card">
+          <img src="https://a.rgbimg.com/users/b/ba/badk/600/qfOGvbS.jpg"/>
+        </ion-card>
+    
+      </ion-slide>
+    </ng-template>
+
+</ion-slides>
+</div>

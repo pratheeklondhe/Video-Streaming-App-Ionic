@@ -21,7 +21,7 @@ export class DataService {
            private loaderService: LoaderService) { }
 
   rest_get(url: string): Observable<Object> {
-    return this.http.get(base_url + url);
+    return this.http.get(base_url + url, this.returnHeaders());
   }
 
   rest_post_with_headers(url: string, body): Observable<Object> {

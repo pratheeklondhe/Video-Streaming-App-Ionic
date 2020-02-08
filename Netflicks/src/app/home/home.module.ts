@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { headermodule } from '../header/header.module';
+import { HomeService } from './home.service';
+import { GenreSliderModule } from '../genre-slider/genre-slider/genre-slider.module';
 
 @NgModule({
   imports: [
@@ -15,8 +17,10 @@ import { headermodule } from '../header/header.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    headermodule
+    headermodule,
+    GenreSliderModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  providers: [HomeService]
 })
 export class HomePageModule {}
