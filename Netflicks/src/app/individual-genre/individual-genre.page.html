@@ -1,14 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="" icon="add"></ion-back-button>
-
-      <!-- <ion-back-button defaultHref="home">
-      </ion-back-button> -->
+      <ion-back-button text="" icon="ios-arrow-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <net-genre-poster 
+  [imageUrl]="genre?.displayImg"
+  ></net-genre-poster>
+
+  <net-genre-dashboard>
+    
+  </net-genre-dashboard>
+
 
 </ion-content>

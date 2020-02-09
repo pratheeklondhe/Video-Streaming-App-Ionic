@@ -1,0 +1,8 @@
+.custom-poster {
+    max-height: 12rem;
+    margin: 0;
+    min-height: 12rem;
+    img {
+        height: -webkit-fill-available;
+    }
+}

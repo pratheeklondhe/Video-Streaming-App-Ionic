@@ -17,10 +17,10 @@ export class IndividualGenrePage implements OnInit {
    }
 
    getRouterData() {
-    // if (this.router.getCurrentNavigation().extras.state) {
+    if (this.router.getCurrentNavigation().extras.state) {
       this.genre = this.router.getCurrentNavigation().extras.state.genre;
       console.log(this.genre);
-    // }
+    }
    }
 
   ngOnInit() {

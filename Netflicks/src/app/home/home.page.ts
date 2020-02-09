@@ -21,7 +21,8 @@ export class HomePage implements OnInit {
         this.homepageInitial = <HomepageInitial>data;
       }
     }, error => {
-      console.log('ERROR GETTING DATA')
+      console.log('ERROR GETTING DATA');
+      console.log(error);
     });
    }
 
@@ -30,9 +31,10 @@ export class HomePage implements OnInit {
   }
 
   genreSelected(navigationExtras: NavigationExtras) {
+    navigationExtras.skipLocationChange = true;
+    // navigationExtras.replaceUrl = true;
     console.log(navigationExtras);
-    // NavigationExtras
-    this.router.navigate(['/genre'], navigationExtras);
+    this.router.navigateByUrl('/genre', navigationExtras);
   }
 
 }
