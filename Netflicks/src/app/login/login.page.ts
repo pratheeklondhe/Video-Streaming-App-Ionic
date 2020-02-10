@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  baseUrl: string;
+
   constructor(private loginServiceService: LoginServiceService,
     private router: Router) {}
 
@@ -36,6 +38,15 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  setUrl() {
+    window.localStorage.removeItem('baseUrl');
+    window.localStorage.setItem('baseUrl', this.baseUrl);
+  }
+
+  clearUrl() {
+    window.localStorage.removeItem('baseUrl');
   }
 
 }

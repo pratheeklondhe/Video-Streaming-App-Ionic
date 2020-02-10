@@ -10,7 +10,6 @@ import { LoginServiceService } from './login/login-service.service';
 
 
 
-const base_url = Config.base_url;
 @Injectable({
   providedIn: 'root'
 })
@@ -21,15 +20,16 @@ export class DataService {
            private loaderService: LoaderService) { }
 
   rest_get(url: string): Observable<Object> {
-    return this.http.get(base_url + url, this.returnHeaders());
+    return this.http.get(this.getBaseUrl() + url, this.returnHeaders());
   }
 
   rest_post_with_headers(url: string, body): Observable<Object> {
+    console.log(this.getBaseUrl() + " dhsjahdksahkdhsa");
     // let loader = this.loaderService.createBasicLoader().then(() => {});
 
     // loader.then((res) => res.present())
     // (async function(){ await (await loader).present()})();
-    return this.http.post(base_url + url, body, {observe: 'response'});
+    return this.http.post(this.getBaseUrl() + url, body, {observe: 'response'});
 
           // .pipe(finalize(() => {
           //   loader.dismiss();
@@ -37,13 +37,19 @@ export class DataService {
   }
 
   rest_post(url: string, body: any): Observable<Object> {
-    return this.http.post(base_url + url, body, this.returnHeaders());
+    return this.http.post(this.getBaseUrl() + url, body, this.returnHeaders());
   }
 
   returnHeaders() {
     return ({
       headers: new HttpHeaders({'x-auth-token': window.sessionStorage.getItem('x-auth-token')})
     });
+  }
+
+  getBaseUrl(): string {
+    let baseUrl = window.localStorage.getItem('baseUrl');
+    baseUrl = baseUrl ? baseUrl : 'http://localhost:3000/api/';
+    return baseUrl;
   }
 
 }
