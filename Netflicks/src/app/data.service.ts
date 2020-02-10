@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Config } from './configurations/config';
 import { LoaderService } from './utilities/loader.service';
@@ -19,8 +19,8 @@ export class DataService {
             // private loginService: LoginServiceService,
            private loaderService: LoaderService) { }
 
-  rest_get(url: string): Observable<Object> {
-    return this.http.get(this.getBaseUrl() + url, this.returnHeaders());
+  rest_get(url: string, params?: HttpParams): Observable<Object> {
+    return this.http.get(this.getBaseUrl() + url, this.returnHeaders(params));
   }
 
   rest_post_with_headers(url: string, body): Observable<Object> {
@@ -40,16 +40,18 @@ export class DataService {
     return this.http.post(this.getBaseUrl() + url, body, this.returnHeaders());
   }
 
-  returnHeaders() {
+  returnHeaders(params?: HttpParams) {
     return ({
-      headers: new HttpHeaders({'x-auth-token': window.sessionStorage.getItem('x-auth-token')})
+      headers: new HttpHeaders({'x-auth-token': window.sessionStorage.getItem('x-auth-token')}),
+      params: params
     });
   }
 
   getBaseUrl(): string {
     let baseUrl = window.localStorage.getItem('baseUrl');
     baseUrl = baseUrl ? baseUrl : 'http://localhost:3000/api/';
-    return baseUrl;
+    // return baseUrl;
+    return Config.base_url;
   }
 
 }

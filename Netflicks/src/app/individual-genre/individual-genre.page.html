@@ -12,9 +12,16 @@
   [imageUrl]="genre?.displayImg"
   ></net-genre-poster>
 
-  <net-genre-dashboard>
-    
-  </net-genre-dashboard>
+  <net-genre-dashboard
+  [title]="genre?.title"
+  [description]="genre?.description"
+  ></net-genre-dashboard>
+
+  <!-- <net-genre-slider
+      [title] = "'Trending'"
+      [genreList] = "homepageInitial.TRENDING"
+      (genreSelected) = "genreSelected($event)"
+      ></net-genre-slider> -->
 
 
 </ion-content>

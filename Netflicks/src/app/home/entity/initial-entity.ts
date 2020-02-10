@@ -16,4 +16,5 @@ export class GenreObj {
     title: string;
     description: string;
     displayImg: string;
+    category: string[] = [];
 }

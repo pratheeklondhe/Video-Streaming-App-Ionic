@@ -1,15 +1,30 @@
-<ion-grid class="ion-no-padding">
+<ion-grid class="ion-no-padding card-shadow" (click)="isDescriptionExpanded = !isDescriptionExpanded">
 
   <ion-row>
-    <ion-col col-8>
-      Details
+    <ion-col size="8">
+      <ion-text> {{ title }} </ion-text>
     </ion-col>
-    <ion-col col-2>
-      Icon
+    <ion-col size="2" class="align-items-center vertical-center-margin larger-size">
+      <ion-icon name="heart"></ion-icon>
     </ion-col>
-    <ion-col col-2>
-        Download
+    <ion-col size="2" class="align-items-center vertical-center-margin larger-size">
+      <ion-icon name="download"></ion-icon>
     </ion-col>
   </ion-row>
 
-  </ion-grid>
+</ion-grid>
+
+<ion-row class="ion-no-padding genre-descrptn card-shadow" *ngIf="isDescriptionExpanded">
+  <ion-col size="0.5"></ion-col>
+  <ion-col size="11">
+    <ion-text> {{ description }} </ion-text>
+  </ion-col>
+  <ion-col size="0.5"></ion-col>
+
+  <ion-col size="0.5"></ion-col>
+  <ion-col size="11">
+    <button type="button" class="btn btn-primary btn-block">Watch Now</button>
+  </ion-col>
+  <ion-col size="0.5"></ion-col>
+
+</ion-row>

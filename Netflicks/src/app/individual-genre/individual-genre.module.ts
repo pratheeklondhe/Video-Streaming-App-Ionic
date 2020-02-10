@@ -8,6 +8,8 @@ import { IndividualGenrePageRoutingModule } from './individual-genre-routing.mod
 
 import { IndividualGenrePage } from './individual-genre.page';
 import { GenrePosterModule } from '../genre-poster/genre-poster.module';
+import { GenreSliderModule } from '../genre-slider/genre-slider/genre-slider.module';
+import { HomeService } from '../home/home.service';
 
 @NgModule({
   imports: [
@@ -15,8 +17,10 @@ import { GenrePosterModule } from '../genre-poster/genre-poster.module';
     FormsModule,
     IonicModule,
     IndividualGenrePageRoutingModule,
-    GenrePosterModule
+    GenrePosterModule,
+    GenreSliderModule
   ],
+  providers: [HomeService],
   declarations: [IndividualGenrePage]
 })
 export class IndividualGenrePageModule {}

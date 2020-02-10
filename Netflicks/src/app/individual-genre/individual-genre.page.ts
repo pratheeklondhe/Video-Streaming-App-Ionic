@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenreObj } from '../home/entity/initial-entity';
+import { HomeService } from '../home/home.service';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-individual-genre',
@@ -11,9 +13,9 @@ export class IndividualGenrePage implements OnInit {
 
   genre: GenreObj;
 
-  constructor(private router: Router) {
-    this.getRouterData();
-      
+  constructor(private router: Router,
+      private homeService: HomeService) {
+    this.getRouterData();     
    }
 
    getRouterData() {
@@ -24,6 +26,11 @@ export class IndividualGenrePage implements OnInit {
    }
 
   ngOnInit() {
+    this.homeService.getGenreOfCategory(this.genre.category[0]).subscribe(data => {
+      console.log(data)
+    }, error => {
+
+    })
   }
 
 }

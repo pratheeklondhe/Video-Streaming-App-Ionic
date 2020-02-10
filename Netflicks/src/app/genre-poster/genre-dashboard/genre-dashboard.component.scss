@@ -1,0 +1,45 @@
+ion-grid {
+    display: flex;
+    align-items: center;
+    height: 4rem;
+
+    ion-row {
+        width: 100%;
+        font-size: larger;
+
+        ion-col {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    ion-text {
+        margin-left: 1rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.larger-size {
+    font-size: larger;
+}
+
+.genre-descrptn {
+    display: flex;
+    align-items: center;
+    height: 10rem;
+    
+    ion-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.genre-descrptn:active {
+    background-color: red;
+    transition-duration: 2s;
+    transition-delay: 2s;
+    transition-timing-function: linear;
+}
