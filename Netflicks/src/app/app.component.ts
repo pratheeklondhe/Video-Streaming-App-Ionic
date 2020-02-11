@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ThemeService } from './theme.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private router: Router
   ) {
     this.initializeApp();
   }
@@ -53,4 +55,11 @@ export class AppComponent {
       this.themeService.enableLightMode();
     }
   }
+
+  logout() {
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+    this.router.navigateByUrl('');
+  }
+
 }

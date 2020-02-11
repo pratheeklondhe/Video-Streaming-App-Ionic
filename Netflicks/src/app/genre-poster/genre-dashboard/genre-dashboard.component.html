@@ -7,7 +7,7 @@
     <ion-col size="2" class="align-items-center vertical-center-margin larger-size">
       <ion-icon class="poster-dashboard-icons" name="heart"></ion-icon>
     </ion-col>
-    <ion-col size="2" class="align-items-center vertical-center-margin larger-size">
+    <ion-col size="2" (click)="downloadGenre()" class="align-items-center vertical-center-margin larger-size">
       <ion-icon class="poster-dashboard-icons" name="download"></ion-icon>
     </ion-col>
   </ion-row>
@@ -23,7 +23,7 @@
 
   <ion-col size="0.5"></ion-col>
   <ion-col size="11">
-    <button type="button" class="btn btn-primary btn-block">Watch Now</button>
+    <button type="button" class="btn custom-btn btn-block">Watch Now</button>
   </ion-col>
   <ion-col size="0.5"></ion-col>
 

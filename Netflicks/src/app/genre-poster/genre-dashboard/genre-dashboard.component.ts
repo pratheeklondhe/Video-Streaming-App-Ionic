@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'net-genre-dashboard',
@@ -11,12 +12,16 @@ export class GenreDashboardComponent implements OnInit {
   @Input() description: string;
   isDescriptionExpanded = false;
 
-  constructor() { }
+  constructor(private toastController: ToastController) { }
 
   ngOnInit() {}
 
-  toggleDescription() {
-
+  async downloadGenre() {
+    const toast = await this.toastController.create({
+      message: 'Not Available For Download',
+      duration: 200000
+    });
+    toast.present();
   }
 
 }

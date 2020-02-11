@@ -80,6 +80,18 @@
     .poster-dashboard-icons {
         color: var(--net-netflix-red-color);
     }
+
+    .card-shadow {
+        box-shadow: 0 3px 1px -2px #dc353c,
+             0 2px 2px 0 #000,
+             0 1px 5px 0 #000;
+    }
+
+    .custom-btn {
+        font-weight: 900;
+        color: #212529;
+        background-color: #d81f26;
+    }
 }
 
 
