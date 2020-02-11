@@ -6,18 +6,18 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ThemeService {
   renderer: Renderer2;
-
-  constructor(private rendererfactory:RendererFactory2, 
+  
+  constructor(private rendererfactory:RendererFactory2,
     @Inject(DOCUMENT) private document: Document ) { 
-    this.renderer = this.rendererfactory.createRenderer(null, null);        
+    this.renderer = this.rendererfactory.createRenderer(null, null);
   }
 
     enableDarkMode() {
-      this.renderer.addClass(this.document.body, 'dark-theme'); 
+      this.renderer.addClass(this.document.body, 'dark-theme');
     }
 
     enableLightMode() {
-      this.renderer.removeClass(this.document.body, 'dark-theme'); 
+      this.renderer.removeClass(this.document.body, 'dark-theme');
     }
 
 }

@@ -58,4 +58,8 @@ export class IndividualGenrePage implements OnInit {
     });
   }
 
+  routeToHome() {
+    this.router.navigateByUrl('/home');
+  }
+
 }

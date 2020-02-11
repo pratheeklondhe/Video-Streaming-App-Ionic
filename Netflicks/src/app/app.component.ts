@@ -24,6 +24,8 @@ export class AppComponent {
     }
   ];
 
+  isDarkMode = true;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -37,10 +39,18 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.toggleTheme();
     });
   }
 
   toggleTheme() {
-    this.themeService.enableDarkMode();
+    if (this.isDarkMode) {
+      this.isDarkMode = false;
+      this.themeService.enableDarkMode();
+    } else {
+      this.isDarkMode = true;
+      this.themeService.enableLightMode();
+    }
   }
 }
