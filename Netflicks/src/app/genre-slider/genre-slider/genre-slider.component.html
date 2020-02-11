@@ -6,7 +6,8 @@
         </ion-text>
     </ion-col>
   </ion-row>
-<ion-slides [options]="sliderOpts">
+
+<ion-slides #slider [options]="sliderOpts">
   <div *ngIf="genreList && genreList.length;then content else skeleton"></div>
     <ng-template #content>
       <ion-slide *ngFor="let genre of genreList">

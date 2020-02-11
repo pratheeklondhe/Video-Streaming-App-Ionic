@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 import { GenreObj } from '../home/entity/initial-entity';
 import { HomeService } from '../home/home.service';
-import { error } from 'protractor';
+import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.component';
 
 @Component({
   selector: 'app-individual-genre',
@@ -11,26 +11,51 @@ import { error } from 'protractor';
 })
 export class IndividualGenrePage implements OnInit {
 
+  @ViewChildren(GenreSliderComponent) genreSliderComponent: QueryList<GenreSliderComponent>;
   genre: GenreObj;
+  similarGenres: GenreObj[] = [];
 
-  constructor(private router: Router,
-      private homeService: HomeService) {
-    this.getRouterData();     
-   }
+  constructor(private router: Router, private homeService: HomeService) {
+    this.getRouterData();
+  }
 
-   getRouterData() {
+  getRouterData() {
     if (this.router.getCurrentNavigation().extras.state) {
       this.genre = this.router.getCurrentNavigation().extras.state.genre;
       console.log(this.genre);
     }
-   }
+  }
 
   ngOnInit() {
-    this.homeService.getGenreOfCategory(this.genre.category[0]).subscribe(data => {
-      console.log(data)
-    }, error => {
+    this.getGenreOfCategory();
+  }
 
-    })
+  getGenreOfCategory() {
+    this.homeService.getGenreOfCategory(this.genre.category[0], this.genre.genreId).subscribe(data => {
+      this.similarGenres = data as GenreObj[];
+      if (this.similarGenres && this.similarGenres.length) {
+
+      } else {
+        console.log('No Similar Genres available');
+      }
+      console.log(data);
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  genreSelected(navigationExtras: NavigationExtras) {
+    this.router.navigate(['/genre/' + navigationExtras.state.genre.genreId], navigationExtras);
+  }
+
+  ionViewDidEnter() {
+    this.refreshSliders();
+  }
+
+  refreshSliders() {
+    this.genreSliderComponent.forEach(slider => {
+      slider.updateSlider();
+    });
   }
 
 }

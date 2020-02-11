@@ -14,7 +14,7 @@ const routes: Routes = [
     // loadChildren: './home/home.module#HomePageModule'
   },
   {
-    path: 'genre',
+    path: 'genre/:id',
     loadChildren: () => import('./individual-genre/individual-genre.module').then( m => m.IndividualGenrePageModule)
   }
 ];

@@ -17,11 +17,11 @@
   [description]="genre?.description"
   ></net-genre-dashboard>
 
-  <!-- <net-genre-slider
-      [title] = "'Trending'"
-      [genreList] = "homepageInitial.TRENDING"
+  <net-genre-slider *ngIf="similarGenres && similarGenres.length"
+      [title] = "'Similar'"
+      [genreList] = "similarGenres"
       (genreSelected) = "genreSelected($event)"
-      ></net-genre-slider> -->
+      ></net-genre-slider>
 
 
 </ion-content>

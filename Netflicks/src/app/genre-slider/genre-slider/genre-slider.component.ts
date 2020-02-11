@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { GenreObj } from 'src/app/home/entity/initial-entity';
 import { NavigationExtras } from '@angular/router';
+import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'net-genre-slider',
@@ -9,11 +10,14 @@ import { NavigationExtras } from '@angular/router';
 })
 export class GenreSliderComponent implements OnInit {
 
+  @ViewChild (IonSlides, { static: false } ) slider: IonSlides;
+
   @Input() title: string;
   @Input() genreList: GenreObj[] = [];
   @Output() genreSelected: EventEmitter<NavigationExtras> = new EventEmitter<NavigationExtras>();
 
-  skeletonList = [1,2,3,4,5,6,7,8];
+
+  skeletonList = [1, 2, 3, 4, 5, 6, 7, 8];
   sliderOpts = {
     // spaceBetween: 0,
     centeredSlides: false,
@@ -60,18 +64,24 @@ export class GenreSliderComponent implements OnInit {
       // spaceBetween: 40
     }
   }
-  }
+  };
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   cardClicked(genre: GenreObj) {
     const navigationExtras: NavigationExtras = {
       state: {
         genre: genre
       }
-    }
+    };
     this.genreSelected.emit(navigationExtras);
+  }
+
+  updateSlider() {
+    this.slider.update();
+    this.slider.updateAutoHeight();
   }
 
 }

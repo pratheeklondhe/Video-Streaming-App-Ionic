@@ -13,11 +13,12 @@ export class HomeService {
     return this.dataService.rest_get('retreivegenre/getinitial');
   }
 
-  getGenreOfCategory(category: string) {
-    let params = new HttpParams();
-    params.append('category', category);
-    params.append('skip', '0');
-    params.append('limit', '2');
+  getGenreOfCategory(category: string, genreId: string) {
+    const params: HttpParams = new HttpParams()
+    .set('category', category)
+    .set('skip', '0')
+    .set('limit', '2')
+    .set('genreId', genreId);
     return this.dataService.rest_get('retreivegenre/getgenreofcategory', params);
   }
 }

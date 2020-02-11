@@ -7,7 +7,7 @@ export class HomepageInitial {
     FANTASY: GenreObj[] = [];
     COMEDY: GenreObj[] = [];
     TRENDING: GenreObj[] = [];
-} 
+};
 
 export class GenreObj {
     screenshots: string[] = [];
@@ -17,4 +17,4 @@ export class GenreObj {
     description: string;
     displayImg: string;
     category: string[] = [];
-}
+};
