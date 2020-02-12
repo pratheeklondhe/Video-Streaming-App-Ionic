@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'net-genre-poster',
@@ -8,9 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GenrePosterComponent implements OnInit {
 
   @Input() imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSuldhIBGBw1T5Y_bolOGKX479m-eXK0T8jwFINBvzHDb5y7WpY';
+  @Output() playClicked: EventEmitter<String> = new EventEmitter<String>();
 
   constructor() { }
 
   ngOnInit() {}
+
+  playClicked1() {
+    this.playClicked.emit('Play');
+  }
 
 }
