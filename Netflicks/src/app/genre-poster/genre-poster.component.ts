@@ -26,7 +26,7 @@ export class GenrePosterComponent implements OnChanges {
   playPause() {
     this.isStartedPlaying = true;
     setTimeout(() => {
-      const myVideo: any = document.getElementById('my_video_1');
+      const myVideo: any = document.getElementById('video');
       if (myVideo.paused) {
         myVideo.play();
         this.isPlaying = true;
@@ -35,16 +35,11 @@ export class GenrePosterComponent implements OnChanges {
         this.isPlaying = false;
       }
     });
-
   }
 
   getVideoUrl(): string {
     return this.dataService.getBaseUrl() + 'retreivegenre/stream/' +
       this.genre.genreId + '/' + this.loginServiceService.retrieveToken();
-  }
-
-  playClicked1() {
-    this.playClicked.emit('Play');
   }
 
 }

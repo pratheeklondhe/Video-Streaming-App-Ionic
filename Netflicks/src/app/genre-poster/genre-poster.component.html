@@ -10,7 +10,7 @@
 
   <img *ngIf="!isStartedPlaying" [src]="imageUrl" />
 
-  <video *ngIf="isStartedPlaying" id="my_video_1" class="video-js vjs-default-skin video-player" controls preload="none" data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+  <video *ngIf="isStartedPlaying" id="video" class="video-js vjs-default-skin video-player" controls preload="none" data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
     <source [src]="url" type='video/mp4' /> Sorry, your browser does not support HTML5 video.
   </video>
 
