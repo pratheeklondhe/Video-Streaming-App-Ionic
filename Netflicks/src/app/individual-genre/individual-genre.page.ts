@@ -3,6 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { GenreObj } from '../home/entity/initial-entity';
 import { HomeService } from '../home/home.service';
 import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.component';
+import { GenrePosterComponent } from '../genre-poster/genre-poster.component';
 
 @Component({
   selector: 'app-individual-genre',
@@ -11,6 +12,7 @@ import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.
 })
 export class IndividualGenrePage implements OnInit {
 
+  @ViewChild(GenrePosterComponent, { static: false }) genrePosterComponent: GenrePosterComponent;
   @ViewChildren(GenreSliderComponent) genreSliderComponent: QueryList<GenreSliderComponent>;
   genre: GenreObj;
   similarGenres: GenreObj[] = [];
@@ -64,6 +66,10 @@ export class IndividualGenrePage implements OnInit {
 
   playGenre() {
     this.homeService.sampleCall().subscribe();
+  }
+
+  watchNow() {
+    this.genrePosterComponent.playPause();
   }
 
 }

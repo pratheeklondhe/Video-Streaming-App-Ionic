@@ -1,6 +1,6 @@
 <ion-card [ngClass]="!isStartedPlaying ? 'custom-poster' : ''" class="ion-no-padding">
 
-  <ion-row *ngIf="!isPlaying">
+  <ion-row *ngIf="!isPlaying && !isStartedPlaying">
     <ion-col size="5"></ion-col>
     <ion-col size="2" (click)="playPause()">
       <ion-icon name="play"></ion-icon>

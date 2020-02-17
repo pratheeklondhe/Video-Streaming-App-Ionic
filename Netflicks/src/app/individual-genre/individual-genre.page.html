@@ -19,6 +19,7 @@
   <net-genre-dashboard
   [title]="genre?.title"
   [description]="genre?.description"
+  (watchNow)="watchNow()"
   ></net-genre-dashboard>
 
   <net-genre-slider *ngIf="similarGenres && similarGenres.length"
