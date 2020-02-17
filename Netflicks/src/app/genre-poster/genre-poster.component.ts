@@ -43,4 +43,8 @@ export class GenrePosterComponent implements OnChanges {
       this.genre.genreId + '/' + this.loginServiceService.retrieveToken();
   }
 
+  playClicked1() {
+    this.playClicked.emit('Play');
+  }
+
 }

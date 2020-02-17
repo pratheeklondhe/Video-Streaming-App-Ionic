@@ -21,4 +21,8 @@ export class HomeService {
     .set('genreId', genreId);
     return this.dataService.rest_get('retreivegenre/getgenreofcategory', params);
   }
+
+  sampleCall() {
+    return this.dataService.rest_get_mp4('');
+  }
 }

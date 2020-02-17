@@ -54,4 +54,12 @@ export class DataService {
     return Config.base_url;
   }
 
+  rest_get_mp4(url) {
+    const header = {
+      headers: new HttpHeaders({'Content-Type': 'video/mp4'}),
+      
+    }
+    return this.http.get(this.getBaseUrl() + url, {responseType: 'text'});
+  }
+
 }

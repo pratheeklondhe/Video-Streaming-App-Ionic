@@ -62,4 +62,8 @@ export class IndividualGenrePage implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
+  playGenre() {
+    this.homeService.sampleCall().subscribe();
+  }
+
 }
