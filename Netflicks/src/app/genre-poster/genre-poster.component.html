@@ -1,13 +1,17 @@
-<ion-card class="custom-poster ion-no-padding">
+<ion-card [ngClass]="!isStartedPlaying ? 'custom-poster' : ''" class="ion-no-padding">
 
-  <ion-row>
+  <ion-row *ngIf="!isPlaying">
     <ion-col size="5"></ion-col>
-    <ion-col size="2">
+    <ion-col size="2" (click)="playPause()">
       <ion-icon name="play"></ion-icon>
     </ion-col>
     <ion-col size="5"></ion-col>
   </ion-row>
 
-  <img [src]="imageUrl"/>
-  
+  <img *ngIf="!isStartedPlaying" [src]="imageUrl" />
+
+  <video *ngIf="isStartedPlaying" id="my_video_1" class="video-js vjs-default-skin video-player" controls preload="none" data-setup='{ "aspectRatio":"640:267", "playbackRates": [1, 1.5, 2] }'>
+    <source [src]="url" type='video/mp4' /> Sorry, your browser does not support HTML5 video.
+  </video>
+
 </ion-card>

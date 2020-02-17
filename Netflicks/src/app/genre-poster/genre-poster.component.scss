@@ -31,3 +31,14 @@
         }
     }
 }
+
+.custom-wrapper {
+    height: -webkit-fill-available;
+    width: 100%;
+    position: absolute;
+}
+
+.video-player {
+    height: auto;
+    width: 100%;
+}
