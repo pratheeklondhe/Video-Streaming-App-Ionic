@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeService } from './theme.service';
+import { AuthGuard } from './route-guard/auth-guard.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { ThemeService } from './theme.service';
     StatusBar,
     SplashScreen,
     ThemeService,
+    AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

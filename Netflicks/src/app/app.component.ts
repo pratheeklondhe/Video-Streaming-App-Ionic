@@ -12,19 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }
-  ];
-
+  
   isDarkMode = true;
 
   constructor(
@@ -59,6 +47,8 @@ export class AppComponent {
   logout() {
     window.localStorage.clear();
     window.sessionStorage.clear();
+    this.isDarkMode = true;
+    this.toggleTheme();
     this.router.navigateByUrl('');
   }
 
