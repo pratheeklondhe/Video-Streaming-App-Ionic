@@ -10,6 +10,10 @@
     width: 100%;
 }
 
+.flex-direction-column {
+    flex-direction: column;
+}
+
 .width-100rem{
     width: 100rem;
 }
@@ -37,6 +41,12 @@
         font-size: inherit;
         font-weight: bolder;
         color: red;
+}
+
+// Slide to unlock typ animation
+@keyframes slideThing {
+    from {background-position:-700px}
+    to {background-position:700px}
 }
 
 //Dark theme

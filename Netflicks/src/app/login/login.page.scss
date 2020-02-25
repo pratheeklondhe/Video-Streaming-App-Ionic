@@ -3,3 +3,27 @@
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+.login-button-size {
+    font-size: 1.3rem;
+    font-weight: bolder;
+}
+
+@keyframes slideyThing {
+    from {background-position:-700px}
+    to {background-position:700px}
+  }
+  
+  #gradient {
+    background:linear-gradient(90deg,#222,white,#222);
+    opacity:1;   
+    color:transparent;
+    -webkit-background-clip:text;    
+    animation: slideyThing 5s infinite linear;
+  }
+
+  .custom-anchor {
+    margin-top: 1rem;
+    color: #117aca;
+    font-weight: bolder;
+  }

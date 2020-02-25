@@ -2,16 +2,6 @@
   <div style="padding: 1rem" class="display-flex align-items-center height-100prcnt netflix-backgroundImg">
     <div class="container-sm">
 
-      <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text login-input-side-badges" id="basic-addon1">URL</span>
-            </div>
-            <input [(ngModel)]="baseUrl" type="text" name="baseUrlName" class="form-control" placeholder="Base Url" aria-label="Baseurl" aria-describedby="basic-addon1">
-          </div>
-          <button (click)="setUrl()" type="button" class="btn btn-dark">Save Base Url</button>
-          <button (click)="clearUrl()" type="button" class="btn btn-dark">Remove Base Url</button>
-
-<br><br>
       <form #loginForm="ngForm">
         
         <div class="input-group mb-3">
@@ -28,9 +18,18 @@
               </div>
           </div>
 
-          <button (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid" type="button" class="btn btn-dark btn-block">Login</button>
+          <button (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid" type="button" class="btn btn-dark btn-block ion-no-padding">
+            <div id="gradient" class="login-button-size">Log In</div>
+            <!-- <ion-spinner name="lines"></ion-spinner> -->
+          </button>
       </form>
 
+      
+
+        <!-- <div class="custom-anchor display-flex align-items-center flex-direction-column"> Sign Up? </div> -->
+
     </div>
+
+    
   </div>
 </ion-content>
