@@ -49,7 +49,11 @@ export class AppComponent {
     window.sessionStorage.clear();
     this.isDarkMode = true;
     this.toggleTheme();
-    this.router.navigateByUrl('');
+    // this.router.navigateByUrl('');
+  }
+
+  checkStatus() {
+    return this.router.url === '/';
   }
 
 }

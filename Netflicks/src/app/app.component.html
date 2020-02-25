@@ -1,6 +1,6 @@
 <ion-app>
   <!-- <ion-split-pane contentId="main-content"> -->
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu [disabled]="checkStatus()" contentId="main-content" type="overlay">
       <ion-header>
         <ion-toolbar>
           <ion-title>Menu</ion-title>
@@ -8,15 +8,6 @@
       </ion-header>
       <ion-content>
         <ion-list class="ion-no-padding">
-          <!-- <ion-menu-toggle auto-hide="true" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle> -->
-
           <ion-menu-toggle auto-hide="true">
             <ion-item (click)="toggleTheme()">
               <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
@@ -27,7 +18,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
-            <ion-item (click)="logout()">
+            <ion-item (click)="logout()" [routerLink]="['']" routerDirection="backward">
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Logout
