@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class AppComponent {
   
   isDarkMode = true;
+  darkModeColor = '#231f20';
+  lightModeColor = '#fff';
 
   constructor(
     private platform: Platform,
@@ -27,7 +29,7 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString(this.lightModeColor);
       this.splashScreen.hide();
 
       this.toggleTheme();
@@ -38,9 +40,11 @@ export class AppComponent {
     if (this.isDarkMode) {
       this.isDarkMode = false;
       this.themeService.enableDarkMode();
+      this.statusBar.backgroundColorByHexString(this.darkModeColor);
     } else {
       this.isDarkMode = true;
       this.themeService.enableLightMode();
+      this.statusBar.backgroundColorByHexString(this.lightModeColor);
     }
   }
 
