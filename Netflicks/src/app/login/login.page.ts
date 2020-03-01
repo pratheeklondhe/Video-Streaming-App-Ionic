@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginServiceService } from './login-service.service';
 import { Router } from '@angular/router';
+import { Events } from '@ionic/angular';
+
+      
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,7 +14,7 @@ export class LoginPage implements OnInit {
   baseUrl: string;
 
   constructor(private loginServiceService: LoginServiceService,
-    private router: Router) {}
+    private router: Router, private event: Events) {}
 
 
 
@@ -19,12 +22,21 @@ export class LoginPage implements OnInit {
     console.log(loginForm.form.value);
     this.loginServiceService.userLogin(loginForm.form.value).subscribe(data =>{
       this.storeUserToken(data);
-      // this.test();
-      this.router.navigate(['/home']);
+      if (data && data['body']['role'] === 'USER') {
+        this.publishEvent('USER');
+        this.router.navigate(['/home']);
+      } else if (data && data['body']['role'] === 'ADMIN') {
+        this.publishEvent('ADMIN');
+        this.router.navigate(['/admin']);
+      }
     }, error => {
       loginForm.reset();
       this.loginServiceService.clearSessionStorage();
     });
+  }
+
+  publishEvent(role: string) {
+    this.event.publish('role', {role: role});
   }
 
   storeUserToken(data) {

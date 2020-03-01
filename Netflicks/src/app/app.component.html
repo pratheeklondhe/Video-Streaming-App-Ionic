@@ -7,7 +7,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list class="ion-no-padding">
+        <ion-list class="ion-no-padding" *ngIf="role === 'USER'">
           <ion-menu-toggle auto-hide="true">
             <ion-item (click)="toggleTheme()">
               <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
@@ -22,6 +22,27 @@
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Logout
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
+
+        <ion-list class="ion-no-padding" *ngIf="role === 'ADMIN'">
+          <ion-menu-toggle auto-hide="true">
+            <ion-item (click)="toggleTheme()">
+              <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
+              <ion-label>
+                Toggle Theme
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="true">
+            <ion-item (click)="logout()" [routerLink]="['']" routerDirection="backward">
+              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-label>
+                Dash
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

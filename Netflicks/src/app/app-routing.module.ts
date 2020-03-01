@@ -10,13 +10,22 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'genre/:id',
-    loadChildren: () => import('./individual-genre/individual-genre.module').then( m => m.IndividualGenrePageModule),
+    loadChildren: () => import('./individual-genre/individual-genre.module').then(m => m.IndividualGenrePageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardPageModule)
+    , canActivate: [AuthGuard]
+  },
+  {
+    path: 'genre-edit-modal',
+    loadChildren: () => import('./admin/genre-edit-modal/genre-edit-modal.module').then( m => m.GenreEditModalPageModule)
   }
 ];
 
@@ -24,8 +33,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes
       // , { preloadingStrategy: PreloadAllModules }
-      )
+    )
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

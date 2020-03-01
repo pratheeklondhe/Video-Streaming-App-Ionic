@@ -1,0 +1,27 @@
+<net-header [title]="'NETFLICKS'" ></net-header>
+
+
+<ion-content>
+
+  <ion-item lines="full">
+    <ion-label>Category</ion-label>
+    <ion-select multiple="true" [(ngModel)]="selectedCategory" 
+        cancelText="Cancel" okText="Search" (ionChange)="getGenre()">
+      <ion-select-option *ngFor="let catg of categoryList" [value]="catg">{{ catg }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-card *ngFor="let genre of genreList; let i=index" class="card-shadow">
+    <ion-card-header (click)="presentModal(genre)">
+      <ion-card-title class="font-weight-bold">{{genre?.genreId}}
+        <ion-icon name="arrow-forward" float-right></ion-icon>
+      </ion-card-title>
+      <ion-card-subtitle class="font-weight-bold">{{genre?.title}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content class="font-weight-bold">
+       {{genre?.category}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

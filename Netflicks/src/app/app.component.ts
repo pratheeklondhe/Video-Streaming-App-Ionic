@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ThemeService } from './theme.service';
 import { Router } from '@angular/router';
+import { Events } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,15 @@ export class AppComponent {
   isDarkMode = true;
   darkModeColor = '#231f20';
   lightModeColor = '#fff';
+  role: string;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private themeService: ThemeService,
-    private router: Router
+    private router: Router,
+    private event: Events
   ) {
     this.initializeApp();
   }
@@ -33,6 +36,13 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.toggleTheme();
+      this.registerEvent();
+    });
+  }
+
+  registerEvent() {
+    this.event.subscribe('role', data => {
+      this.role = data.role;
     });
   }
 

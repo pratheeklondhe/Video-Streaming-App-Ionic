@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="font-size-14rem"> {{ genre?.title }} </ion-title>
+    <ion-icon (click)="modalDismiss()" 
+    name="close-circle" 
+    class="ion-float-right custom-icon-modal font-size-14rem">
+    </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 1rem;"
+  class="height-100prcnt">
+    <div class="container-sm">
+
+      <form #genreForm="ngForm">
+
+        <ion-label>Genre Id</ion-label>
+          <div class="input-group mb-3">
+            <input disabled [(ngModel)]="genreObj.genreId" required type="text" 
+            name="genreId" class="form-control" placeholder="Genre Id" 
+            aria-label="Username" aria-describedby="basic-addon1">
+          </div> 
+        
+        <ion-label>Genre Title</ion-label>
+        <div class="input-group mb-3">
+            <input [(ngModel)]="genreObj.title" required type="text" name="title" 
+            class="form-control" placeholder="Genre Title" aria-label="Username" 
+            aria-describedby="basic-addon1">
+          </div>
+
+          <ion-label>Genre Description</ion-label>
+          <div class="input-group mb-3">
+            <textarea [(ngModel)]="genreObj.description" required type="text" name="description"
+             class="form-control" aria-label="With textarea" 
+             placeholder="Genre Description"></textarea>
+          </div>
+
+
+          <ion-label>Poster Url</ion-label>
+          <div class="input-group mb-3">
+            <input [(ngModel)]="genreObj.displayImg" required type="text" 
+            name="displayImg" class="form-control" placeholder="Poster Url" 
+            aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <ion-label>Genre Video Title</ion-label>
+          <div class="input-group mb-3">
+            <input [(ngModel)]="genreObj.genreTitle" required type="text" 
+            name="genreTitle" class="form-control" placeholder="Genre Video Title" 
+            aria-label="Username" aria-describedby="basic-addon1">
+          </div>  
+
+          <button (click)="onSubmit(genreForm)" [disabled]="genreForm.invalid" type="button" class="btn btn-dark btn-block ion-no-padding">
+            <div id="gradient" class="login-button-size">Update Genre</div>
+          </button>
+      </form>
+
+    </div>
+
+    
+  </div>
+</ion-content>
