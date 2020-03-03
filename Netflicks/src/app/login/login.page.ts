@@ -12,6 +12,7 @@ import { Events } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   baseUrl: string;
+  isLoader = false;
 
   constructor(private loginServiceService: LoginServiceService,
     private router: Router, private event: Events) {}
@@ -19,7 +20,7 @@ export class LoginPage implements OnInit {
 
 
   onSubmit(loginForm: NgForm) {
-    console.log(loginForm.form.value);
+    this.isLoader = true;
     this.loginServiceService.userLogin(loginForm.form.value).subscribe(data =>{
       this.storeUserToken(data);
       if (data && data['body']['role'] === 'USER') {
@@ -32,11 +33,16 @@ export class LoginPage implements OnInit {
     }, error => {
       loginForm.reset();
       this.loginServiceService.clearSessionStorage();
+      this.isLoader = false;
     });
   }
 
   publishEvent(role: string) {
-    this.event.publish('role', {role: role});
+    this.event.publish('role', {role});
+  }
+
+  ionViewWillEnter() {
+    this.isLoader = false;
   }
 
   storeUserToken(data) {

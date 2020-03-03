@@ -1,37 +1,43 @@
 <ion-content>
   <div style="padding: 1rem;
-  background-image: url('../../assets/custom-svg/netflix.svg')" 
-  class="display-flex align-items-center height-100prcnt netflix-backgroundImg">
+  background-image: url('../../assets/custom-svg/netflix.svg')" class="display-flex align-items-center height-100prcnt netflix-backgroundImg">
     <div class="container-sm">
 
       <form #loginForm="ngForm">
-        
+
         <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text login-input-side-badges" id="basic-addon1">Net</span>
+          <div class="input-group-prepend">
+            <span class="input-group-text login-input-side-badges" id="basic-addon1">Net</span>
+          </div>
+          <input ngModel required type="text" name="email" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <input ngModel required type="password" name="password" class="form-control" placeholder="Password" aria-label="Username"
+            aria-describedby="basic-addon1">
+          <div class="input-group-prepend">
+            <span class="input-group-text login-input-side-badges" id="basic-addon1">Flicks</span>
+          </div>
+        </div>
+
+        <button id="gradient" (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid" type="button" class="btn btn-dark btn-block ion-no-padding display-flex align-items-center flex-direction-column">
+          <div class="login-button-size">
+            <div *ngIf="!isLoader; else elseBlock">
+              Log In
             </div>
-            <input ngModel required type="text" name="email" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <ng-template #elseBlock>
+              <ion-spinner name="lines" class="login-button-size"></ion-spinner>
+            </ng-template>
           </div>
-
-          <div class="input-group mb-3">
-            <input ngModel required type="password" name="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
-              <div class="input-group-prepend">
-                <span class="input-group-text login-input-side-badges" id="basic-addon1">Flicks</span>
-              </div>
-          </div>
-
-          <button (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid" type="button" class="btn btn-dark btn-block ion-no-padding">
-            <div id="gradient" class="login-button-size">Log In</div>
-            <!-- <ion-spinner name="lines"></ion-spinner> -->
-          </button>
+        </button>
       </form>
 
-      
 
-        <!-- <div class="custom-anchor display-flex align-items-center flex-direction-column"> Sign Up? </div> -->
+
+      <!-- <div class="custom-anchor display-flex align-items-center flex-direction-column"> Sign Up? </div> -->
 
     </div>
 
-    
+
   </div>
 </ion-content>

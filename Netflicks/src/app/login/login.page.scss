@@ -7,18 +7,19 @@
 .login-button-size {
     font-size: 1.3rem;
     font-weight: bolder;
+    height: 2rem;
 }
 
 @keyframes slideyThing {
-    from {background-position:-700px}
-    to {background-position:700px}
+    from {background-position:-900px}
+    to {background-position:0px}
   }
   
   #gradient {
-    background:linear-gradient(90deg,#222,white,#222);
-    opacity:1;   
-    color:transparent;
-    -webkit-background-clip:text;    
+    background: linear-gradient(90deg, #222, white, #222);
+    // opacity:1;   
+    // color:transparent;
+    // -webkit-background-clip:text;    
     animation: slideyThing 5s infinite linear;
   }
 
@@ -26,4 +27,8 @@
     margin-top: 1rem;
     color: #117aca;
     font-weight: bolder;
+  }
+
+  ion-spinner {
+    --color: var(--net-darker-red-color);
   }
