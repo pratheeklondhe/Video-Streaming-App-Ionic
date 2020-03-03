@@ -14,6 +14,7 @@ export class GenreObj {
     _id: string;
     genreId: string;
     title: string;
+    genreTitle: string;
     description: string;
     displayImg: string;
     category: string[] = [];

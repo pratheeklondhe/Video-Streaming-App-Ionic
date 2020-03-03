@@ -50,8 +50,8 @@ export class DataService {
   getBaseUrl(): string {
     let baseUrl = window.localStorage.getItem('baseUrl');
     baseUrl = baseUrl ? baseUrl : 'http://localhost:3000/api/';
-    return baseUrl;
-    // return 'https://fast-wildwood-48042.herokuapp.com/api/';
+    // return baseUrl;
+    return 'https://fast-wildwood-48042.herokuapp.com/api/';
   }
 
   rest_get_mp4(url) {
