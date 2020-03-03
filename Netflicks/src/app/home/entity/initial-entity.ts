@@ -19,3 +19,8 @@ export class GenreObj {
     displayImg: string;
     category: string[] = [];
 };
+
+export class GenreFile extends GenreObj {
+    filename: string;
+    lengthInString: string;
+}

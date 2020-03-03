@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GenreObj } from 'src/app/home/entity/initial-entity';
+import { GenreObj, GenreFile } from 'src/app/home/entity/initial-entity';
 import { ModalController, AlertController } from '@ionic/angular';
 import { AdminService } from '../admin.service';
 import { NgForm } from '@angular/forms';
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class GenreEditModalPage implements OnInit {
 
   @Input() genre: GenreObj;
-  genreObj: GenreObj = new GenreObj();
+  genreObj: GenreFile = new GenreFile();
 
   constructor(private modalController: ModalController,
     private adminService: AdminService, private alertController: AlertController) { }
@@ -22,9 +22,10 @@ export class GenreEditModalPage implements OnInit {
   }
 
   getGenre() {
-    this.genreObj = new GenreObj();
+    this.genreObj = new GenreFile();
     this.adminService.getGenreByGenreId(this.genre.genreId).subscribe(data => {
-      this.genreObj = data as GenreObj;
+      this.genreObj = data as GenreFile;
+      console.log(this.genreObj);
     }, error => {
       console.log('Genre Not Found');
     });
