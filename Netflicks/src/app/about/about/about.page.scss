@@ -1,0 +1,116 @@
+.ml5 {
+  position: relative;
+  font-weight: 300;
+  font-size: 2em;
+//   color: red;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 3px;
+  width: 100%;
+//   background-color: red;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, "EB Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+//   width: 1em;
+//   margin-right: -0.1em;
+//   margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
+
+.cust-height-100prcnt {
+    height: 100%;
+    transition: height 2s ease-in;
+}
+
+.trans-prop {
+    height: 10%;
+    transition: height 2s ease-in;
+    // transition-delay: 1s;
+    // transition-duration: 2s;
+    // transition: height .35s ease-in-out;
+}
+
+.ml15 {
+  font-weight: 400;
+  font-size: 1rem;
+  color: red;
+}
+
+.ml15 .word {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.custom-margin-tworem {
+    margin-top: 2rem;
+}
+
+.custom-margin-onerem {
+    margin-top: 1rem;
+}
+
+#outer {
+  display: flex;
+  flex-flow: column;
+//   display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-flow: column;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  height: 100%;
+}
+
+#inner_fixed {
+//   height: 3rem;
+  height: 8rem;
+    margin-top: 2rem;
+//   background-color: grey;
+}
+
+#inner_remaining {
+//   background-color: #DDDDDD;
+   width: 96%;
+  flex-grow : 1;
+}
+
+.cardfooter {
+  position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    opacity: 0.7;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.custom-img-container {
+    height: 90%;
+}

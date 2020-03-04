@@ -18,6 +18,15 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
+            <ion-item [routerLink]="['/about']">
+              <ion-icon slot="start" name="ios-person" class="poster-dashboard-icons"></ion-icon>
+              <ion-label>
+                About
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="true">
             <ion-item (click)="logout()" [routerLink]="['']" routerDirection="backward">
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>

@@ -14,6 +14,10 @@
     flex-direction: column;
 }
 
+.justify-content-center {
+    justify-content: center
+}
+
 .width-100rem{
     width: 100rem;
 }
@@ -45,6 +49,18 @@
         font-size: inherit;
         font-weight: bolder;
         color: var(--net-darker-red-color);
+}
+
+.about-animation-background-color {
+    background-color: var(--net-ion-toolbar-background);
+}
+
+.about-animation-body-color {
+        color: var(--net-ion-toolbar-background);
+}
+
+.color-yellow {
+        color: var(--net-ion-toolbar-background);
 }
 
 // Slide to unlock typ animation
@@ -128,6 +144,18 @@
     ion-label {
         color: var(--ion-color-light-tint);
     }
+
+    .about-animation-background-color {
+        background-color: var(--net-dark-yellow-color);
+    }
+
+    .about-animation-body-color {
+        color: var(--net-darker-red-color);
+    }
+
+    .color-yellow {
+        color: var(--net-dark-yellow-color);
+    }
 }
 
 
@@ -140,4 +168,13 @@
     background-position: center;
     background-size: 100% 100%;
     // background-blend-mode: luminosity;
+}
+
+.into_the_void-backgroundImg {
+    background-image: url("./assets/custom-svg/into_the_void.svg");
+    background-color: var(--net-darker-red-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    // background-size: 100% 100%;
 }

@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'genre-edit-modal',
     loadChildren: () => import('./admin/genre-edit-modal/genre-edit-modal.module').then( m => m.GenreEditModalPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about/about.module').then( m => m.AboutPageModule)
   }
 ];
 

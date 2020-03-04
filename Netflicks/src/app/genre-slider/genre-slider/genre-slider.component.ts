@@ -73,7 +73,7 @@ export class GenreSliderComponent implements OnInit {
   cardClicked(genre: GenreObj) {
     const navigationExtras: NavigationExtras = {
       state: {
-        genre: genre
+        genre
       }
     };
     this.genreSelected.emit(navigationExtras);
