@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginServiceService } from './login-service.service';
 import { Router } from '@angular/router';
-import { Events } from '@ionic/angular';
+import { Events, ModalController } from '@ionic/angular';
+import { RegisterPage } from './register/register/register.page';
 
       
 @Component({
@@ -15,7 +16,8 @@ export class LoginPage implements OnInit {
   isLoader = false;
 
   constructor(private loginServiceService: LoginServiceService,
-    private router: Router, private event: Events) {}
+    private router: Router, private event: Events,
+    private modalController: ModalController) {}
 
 
 
@@ -70,6 +72,13 @@ export class LoginPage implements OnInit {
 
   reportLogin() {
     this.loginServiceService.reportLogin().subscribe();
+  }
+
+  async registerModal() {
+    const modal = await this.modalController.create({
+      component: RegisterPage
+    });
+    await modal.present();
   }
 
 }

@@ -9,6 +9,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 import { LoginServiceService } from './login-service.service';
 import { headermodule } from '../header/header.module';
+import { RegisterPageModule } from './register/register/register.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { headermodule } from '../header/header.module';
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    headermodule
+    headermodule,
+    RegisterPageModule
   ],
   declarations: [LoginPage],
   providers: [LoginServiceService]

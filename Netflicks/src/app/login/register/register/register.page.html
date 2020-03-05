@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="font-size-14rem"> Welcome </ion-title>
+    <ion-icon (click)="modalDismiss()" 
+    name="close-circle" 
+    class="ion-float-right custom-icon-modal font-size-14rem">
+    </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div style="padding: 1rem;"
+   class="display-flex align-items-center height-100prcnt netflix-backgroundImg">
+    <div class="container-sm">
+
+      <form #regForm="ngForm">
+
+        <div class="input-group mb-3">
+          <input min="6" max="15" ngModel required type="email" name="username" 
+          class="form-control" 
+          placeholder="Name (Atleast 6 characters)" aria-label="Username" 
+          aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text login-input-side-badges" 
+            id="basic-addon1">Net</span>
+          </div>
+          <input ngModel required type="text" name="email" class="form-control" 
+          placeholder="Email Id" aria-label="Email" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+          <input ngModel min="3" required type="password" name="password" 
+          class="form-control" 
+          placeholder="Password (Min 3 chars)" aria-label="Password"
+          aria-describedby="basic-addon1">
+          <div class="input-group-prepend">
+            <span class="input-group-text login-input-side-badges" 
+            id="basic-addon1">Flicks</span>
+          </div>
+        </div>
+
+        <button id="gradient" (click)="onSubmit(regForm)" [disabled]="regForm.invalid" 
+        type="button" 
+        class="btn btn-dark btn-block ion-no-padding display-flex align-items-center 
+        flex-direction-column">
+          <div class="login-button-size">
+            <div *ngIf="!isLoader; else elseBlock">
+              Register
+            </div>
+            <ng-template #elseBlock>
+              <ion-spinner name="lines" class="login-button-size"></ion-spinner>
+            </ng-template>
+          </div>
+        </button>
+      </form>
+
+    </div>
+
+  </div>
+</ion-content>

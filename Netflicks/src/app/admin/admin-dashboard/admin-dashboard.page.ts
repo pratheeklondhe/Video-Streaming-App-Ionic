@@ -46,7 +46,7 @@ export class AdminDashboardPage implements OnInit {
         genre: genre
       }
     });
-    return await modal.present();
+    await modal.present();
   }
 
 
