@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
     this.loginServiceService.userLogin(loginForm.form.value).subscribe(data =>{
       this.storeUserToken(data);
       if (data && data['body']['role'] === 'USER') {
+        this.reportLogin();
         this.publishEvent('USER');
         this.router.navigate(['/home']);
       } else if (data && data['body']['role'] === 'ADMIN') {
@@ -65,6 +66,10 @@ export class LoginPage implements OnInit {
 
   clearUrl() {
     window.localStorage.removeItem('baseUrl');
+  }
+
+  reportLogin() {
+    this.loginServiceService.reportLogin().subscribe();
   }
 
 }

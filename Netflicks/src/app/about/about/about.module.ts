@@ -8,6 +8,7 @@ import { AboutPageRoutingModule } from './about-routing.module';
 
 import { AboutPage } from './about.page';
 import { headermodule } from '../../header/header.module';
+import { AboutService } from '../about.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { headermodule } from '../../header/header.module';
     AboutPageRoutingModule,
     headermodule
   ],
-  declarations: [AboutPage]
+  declarations: [AboutPage],
+  providers: [AboutService]
 })
 export class AboutPageModule {}

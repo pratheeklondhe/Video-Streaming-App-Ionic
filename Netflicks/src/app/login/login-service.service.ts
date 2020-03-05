@@ -27,7 +27,7 @@ export class LoginServiceService {
     window.sessionStorage.clear();
   }
 
-  sampleget() {
-    // return this.dataService.
+  reportLogin() {
+    return this.dataService.rest_put('session/login', {});
   }
 }

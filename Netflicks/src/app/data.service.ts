@@ -40,6 +40,10 @@ export class DataService {
     return this.http.post(this.getBaseUrl() + url, body, this.returnHeaders());
   }
 
+  rest_put(url: string, body: any): Observable<Object> {
+    return this.http.put(this.getBaseUrl() + url, body, this.returnHeaders());
+  }
+
   returnHeaders(params?: HttpParams) {
     return ({
       headers: new HttpHeaders({'x-auth-token': window.sessionStorage.getItem('x-auth-token')}),
@@ -50,8 +54,8 @@ export class DataService {
   getBaseUrl(): string {
     let baseUrl = window.localStorage.getItem('baseUrl');
     baseUrl = baseUrl ? baseUrl : 'http://localhost:3000/api/';
-    // return baseUrl;
-    return 'https://fast-wildwood-48042.herokuapp.com/api/';
+    return baseUrl;
+    // return 'https://fast-wildwood-48042.herokuapp.com/api/';
   }
 
   rest_get_mp4(url) {

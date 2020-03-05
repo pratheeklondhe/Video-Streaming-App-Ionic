@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AboutService } from '../about.service';
 
 @Component({
   selector: 'app-about',
@@ -9,11 +10,12 @@ export class AboutPage {
 
   custWindow: any = window;
   emailDetailsShow = false;
-  constructor() { }
+  constructor(private aboutService: AboutService) { }
 
   ionViewWillEnter() {
     this.animate();
     this.moveElementUp();
+    this.reportVisit();
   }
 
   moveElementUp() {
@@ -88,6 +90,14 @@ export class AboutPage {
         });
     }, 5000);
 
+  }
+
+  reportVisit() {
+    this.aboutService.reportVisit().subscribe();
+  }
+
+  reportPVisit() {
+    this.aboutService.reportPVisit().subscribe();
   }
 
 }
