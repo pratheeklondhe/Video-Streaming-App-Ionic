@@ -30,4 +30,8 @@ export class LoginServiceService {
   reportLogin() {
     return this.dataService.rest_put('session/login', {});
   }
+
+  registerUser(obj) {
+    return this.dataService.rest_post_with_headers('usercreation/register', obj);
+  }
 }

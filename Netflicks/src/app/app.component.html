@@ -9,6 +9,15 @@
       <ion-content>
         <ion-list class="ion-no-padding" *ngIf="role === 'USER'">
           <ion-menu-toggle auto-hide="true">
+            <ion-item [routerLink]="['/home']">
+              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle auto-hide="true">
             <ion-item (click)="toggleTheme()">
               <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
@@ -38,6 +47,15 @@
         </ion-list>
 
         <ion-list class="ion-no-padding" *ngIf="role === 'ADMIN'">
+          <ion-menu-toggle auto-hide="true">
+            <ion-item [routerLink]="['/admin']">
+              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-label>
+                Home
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
           <ion-menu-toggle auto-hide="true">
             <ion-item (click)="toggleTheme()">
               <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
