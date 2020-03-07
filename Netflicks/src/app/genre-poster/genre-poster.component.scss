@@ -26,8 +26,8 @@
         flex-direction: column;
 
         ion-icon {
-            font-size: 3rem;
-            color: #6c757d;
+            font-size: 2.3rem;
+    color: red;
         }
     }
 }
@@ -41,4 +41,13 @@
 .video-player {
     height: auto;
     width: 100%;
+}
+
+.icon-wrapper {
+    border: 1px solid red;
+    border-radius: 5px;
+    background: black;
+    opacity: 0.6;
+    width: 5rem;
+    height: 3rem;
 }

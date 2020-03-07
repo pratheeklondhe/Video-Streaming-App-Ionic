@@ -21,7 +21,9 @@ export class GenreDashboardComponent implements OnInit {
   async downloadGenre() {
     const toast = await this.toastController.create({
       message: 'Not Available For Download',
-      duration: 200000
+      duration: 2000,
+      keyboardClose: true,
+      mode: "md"
     });
     toast.present();
   }

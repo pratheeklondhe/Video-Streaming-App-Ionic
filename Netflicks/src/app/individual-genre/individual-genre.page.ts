@@ -47,6 +47,8 @@ export class IndividualGenrePage implements OnInit {
   }
 
   genreSelected(navigationExtras: NavigationExtras) {
+    this.genrePosterComponent.setToInitial();
+    // this.router.
     this.router.navigate(['/genre/' + navigationExtras.state.genre.genreId], navigationExtras);
   }
 

@@ -26,20 +26,40 @@ export class GenrePosterComponent implements OnChanges {
   playPause() {
     this.isStartedPlaying = true;
     setTimeout(() => {
-      const myVideo: any = document.getElementById('video');
-      if (myVideo.paused) {
-        myVideo.play();
-        this.isPlaying = true;
-      } else {
-        myVideo.pause();
-        this.isPlaying = false;
-      }
-    });
+      this.toggleVideoState();
+    }); 
   }
 
   getVideoUrl(): string {
     return this.dataService.getBaseUrl() + 'retreivegenre/stream/' +
       this.genre.genreId + '/' + this.loginServiceService.retrieveToken();
+  }
+
+  toggleVideoState() {
+    const myVideo: any = document.getElementById(`video_${this.genre.genreId}`);
+      if (myVideo && myVideo.paused) {
+        myVideo.play();
+        this.isPlaying = true;
+      } else if (myVideo && !myVideo.paused){
+        myVideo.pause();
+        this.isPlaying = false;
+      }
+  }
+
+  setToInitial() {
+    this.pauseVideo();
+    setTimeout(() => {
+      this.isPlaying = false;
+      this.isStartedPlaying = false;
+    }, 100);
+  }
+
+  pauseVideo() {
+    const myVideo: any = document.getElementById(`video_${this.genre.genreId}`);
+      if (myVideo && !myVideo.paused) {
+        myVideo.pause();
+        this.isPlaying = false;
+      }
   }
 
 }

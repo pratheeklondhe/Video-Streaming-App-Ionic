@@ -1,10 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="font-size-14rem"> Sign Up </ion-title>
-    <ion-icon (click)="modalDismiss()" 
+    
+    <ion-title class="font-size-1-2rem"> 
+      Sign Up
+      <!-- <div>Sign Up</div>  -->
+
+
+      <ion-icon (click)="modalDismiss()" 
     name="close-circle" 
-    class="ion-float-right custom-icon-modal font-size-14rem">
-    </ion-icon>
+    class="ion-float-right custom-icon-modal font-size-14rem ion-float-right">
+    </ion-icon> 
+    </ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +24,7 @@
       <form #regForm="ngForm">
 
         <div class="input-group mb-3">
-          <input min="6" max="15" ngModel required type="email" name="userName" 
+          <input min="6" max="15" ngModel required type="text" name="userName" 
           class="form-control" 
           placeholder="Name (Atleast 6 characters)" aria-label="Username" 
           aria-describedby="basic-addon1">

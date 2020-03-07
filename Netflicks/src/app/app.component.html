@@ -9,7 +9,7 @@
       <ion-content>
         <ion-list class="ion-no-padding" *ngIf="role === 'USER'">
           <ion-menu-toggle auto-hide="true">
-            <ion-item [routerLink]="['/home']">
+            <ion-item [routerLink]="['/home']" class="cursor-pointer">
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Home
@@ -18,7 +18,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
-            <ion-item (click)="toggleTheme()">
+            <ion-item (click)="toggleTheme()" class="cursor-pointer">
               <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Toggle Theme
@@ -27,7 +27,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
-            <ion-item [routerLink]="['/about']">
+            <ion-item [routerLink]="['/about']" class="cursor-pointer">
               <ion-icon slot="start" name="ios-person" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 About
@@ -36,7 +36,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
-            <ion-item (click)="logout()" [routerLink]="['']" routerDirection="backward">
+            <ion-item (click)="logout()" class="cursor-pointer" [routerLink]="['']" routerDirection="backward">
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Logout
@@ -48,7 +48,7 @@
 
         <ion-list class="ion-no-padding" *ngIf="role === 'ADMIN'">
           <ion-menu-toggle auto-hide="true">
-            <ion-item [routerLink]="['/admin']">
+            <ion-item [routerLink]="['/admin']" class="cursor-pointer">
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Home
@@ -57,7 +57,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
-            <ion-item (click)="toggleTheme()">
+            <ion-item (click)="toggleTheme()" class="cursor-pointer">
               <ion-icon slot="start" name="color-wand" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Toggle Theme
@@ -66,7 +66,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle auto-hide="true">
-            <ion-item (click)="logout()" [routerLink]="['']" routerDirection="backward">
+            <ion-item (click)="logout()" class="cursor-pointer" [routerLink]="['']" routerDirection="backward">
               <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Dash

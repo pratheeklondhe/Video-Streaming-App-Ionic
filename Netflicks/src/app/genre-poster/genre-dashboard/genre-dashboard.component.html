@@ -14,17 +14,19 @@
 
 </ion-grid>
 
-<ion-row class="ion-no-padding genre-descrptn card-shadow" *ngIf="isDescriptionExpanded">
+<div 
+*ngIf="isDescriptionExpanded"
+ class="ion-no-padding genre-descrptn card-shadow">
+
+ 
+ <p><ion-text>{{ description }} 
+</ion-text></p>
+<!-- <ion-row>
   <ion-col size="0.5"></ion-col>
   <ion-col size="11">
-    <ion-text> {{ description }} </ion-text>
+    <ion-text> <p>{{ description }} </p></ion-text>
   </ion-col>
   <ion-col size="0.5"></ion-col>
+</ion-row> -->
 
-  <ion-col size="0.5"></ion-col>
-  <ion-col size="11">
-    <button type="button" class="btn custom-btn btn-block" (click)="playPause()">Watch Now</button>
-  </ion-col>
-  <ion-col size="0.5"></ion-col>
-
-</ion-row>
+</div>

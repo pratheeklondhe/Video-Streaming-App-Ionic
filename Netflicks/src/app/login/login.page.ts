@@ -74,11 +74,23 @@ export class LoginPage implements OnInit {
     this.loginServiceService.reportLogin().subscribe();
   }
 
+  ionViewDidLeave() {
+    console.log('Did Leave Login page')
+  }
+
   async registerModal() {
     const modal = await this.modalController.create({
-      component: RegisterPage
+      component: RegisterPage,
+      mode: "ios",
+      keyboardClose: true,
+      // delegate      
+      // swipe-to-close: true
     });
+    // modal.addEventListener('ionModalWillPresent', () => {
+    //   console.log('Hey mahn');
+    // });
     await modal.present();
+    
   }
 
 }

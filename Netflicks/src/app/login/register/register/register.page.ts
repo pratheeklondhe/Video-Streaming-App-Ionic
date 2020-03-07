@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
 import { LoginServiceService } from '../../login-service.service';
 
 @Component({
@@ -8,7 +8,9 @@ import { LoginServiceService } from '../../login-service.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class RegisterPage  {
+
+  @ViewChild('regForm', { static: true})regFormComp: NgForm = new NgForm([], []);
 
   isLoader = false;
 
@@ -16,14 +18,12 @@ export class RegisterPage implements OnInit {
     private loginServiceService: LoginServiceService,
     private toastController: ToastController) { }
 
-  ngOnInit() {
-  }
-
   modalDismiss() {
     this.modalController.dismiss();
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
+    this.regFormComp.reset();
     this.isLoader = false;
   }
 
@@ -32,8 +32,8 @@ export class RegisterPage implements OnInit {
     this.loginServiceService.registerUser(regForm.form.value).subscribe(data => {
       this.toastPreset('Registered Successfully', true);
     }, error => {
-      this.toastPreset('Something went wrong.Try again.', false);
-      // console.log(error);
+      console.log(error);
+      this.toastPreset(error.error.message, false);
       this.isLoader = false;
     });
   }
@@ -41,7 +41,9 @@ export class RegisterPage implements OnInit {
   async toastPreset(msg: string, isDismiss: boolean) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000
+      duration: 2000,
+      keyboardClose: true,
+      mode: "md"
     });
     toast.present();
     toast.onWillDismiss().then(() => {
