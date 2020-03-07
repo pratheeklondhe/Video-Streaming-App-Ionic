@@ -19,7 +19,14 @@ export class GenreSliderComponent implements OnInit {
 
   skeletonList = [1, 2, 3, 4, 5, 6, 7, 8];
   sliderOpts = {
-    // spaceBetween: 0,
+    speed: 400,
+    // effect: 'flip',
+    // spaceBetween: 25,
+    // slidesPerColumn: 1,
+    // resistance: false,
+    watchSlidesProgress: true,
+    watchSlidesVisibility: true,
+    freeModeMomentum: true,
     centeredSlides: false,
     slidesPerView: 7.5,
     updateOnWindowResize: true,
@@ -45,7 +52,7 @@ export class GenreSliderComponent implements OnInit {
     },
     // when window width is >= 640px
     640: {
-      slidesPerView: 3.9,
+      slidesPerView: 3.5,
       // spaceBetween: 40
     },
     // when window width is >= 800px

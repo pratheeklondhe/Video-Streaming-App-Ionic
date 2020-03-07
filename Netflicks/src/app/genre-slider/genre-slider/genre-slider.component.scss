@@ -1,13 +1,14 @@
 
 .slide-card {
     height: inherit;
-    max-width: 10rem;
+    width: 8rem;
     min-height: 10rem;
     max-height: 10rem;
     img {
         height: -webkit-fill-available;
+        width: 100%;
     }
-    width: auto;
+    // width: auto;
 }
 
 .slider-row {
