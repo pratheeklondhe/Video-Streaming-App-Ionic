@@ -14,14 +14,15 @@ export class HomePage implements OnInit {
 
   homepageInitial = new HomepageInitial();
   numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-  order: string[] = [];
-  props1 = ['SCI_FI', 'TRENDING'];
 
   constructor(private homeService: HomeService, private router: Router) {
   }
 
   getInitialData() {
-    this.order = [];
+    console.log(this.homepageInitial);
+    setTimeout(() => {
+          this.refreshSliders();
+        }, 0);
     this.homeService.getInitialData().subscribe(data => {
       if (data) {
         // this.genreKey = Object.keys(data);
@@ -32,8 +33,6 @@ export class HomePage implements OnInit {
         }, 100);
       }
 
-      console.log(this.order);
-      console.log(this.homepageInitial);
     }, error => {
       console.log('ERROR GETTING DATA');
       console.log(error);
@@ -52,7 +51,6 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    
   }
 
   refreshSliders() {

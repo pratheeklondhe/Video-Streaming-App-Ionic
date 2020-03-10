@@ -8,8 +8,22 @@ export class HomepageInitial {
     // FANTASY: GenreObj[] = [];
     // COMEDY: GenreObj[] = [];
 
-    genreOrder: string[] = [];
+    genreOrder: any[] = Order;
 }
+
+const Order = [{
+    key: 'LOADING',
+    VALUE: 'lOADING...'
+},
+{
+    key: 'LOADING',
+    VALUE: 'lOADING...'
+},
+{
+    key: 'LOADING',
+    VALUE: 'lOADING...'
+}
+]
 
 export class GenreObj {
     screenshots: string[] = [];
