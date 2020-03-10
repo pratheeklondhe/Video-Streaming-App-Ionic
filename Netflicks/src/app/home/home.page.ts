@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { HomeService } from './home.service';
-import { HomepageInitial } from './entity/initial-entity';
+import { HomepageInitial, GenreObj } from './entity/initial-entity';
 import { Router, NavigationExtras } from '@angular/router';
 import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.component';
 
@@ -12,16 +12,28 @@ import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.
 export class HomePage implements OnInit {
   @ViewChildren(GenreSliderComponent) genreSliderComponent: QueryList<GenreSliderComponent>;
 
-  homepageInitial: HomepageInitial = new HomepageInitial();
+  homepageInitial = new HomepageInitial();
   numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+  order: string[] = [];
+  props1 = ['SCI_FI', 'TRENDING'];
+
   constructor(private homeService: HomeService, private router: Router) {
   }
 
   getInitialData() {
+    this.order = [];
     this.homeService.getInitialData().subscribe(data => {
       if (data) {
+        // this.genreKey = Object.keys(data);
+        // this.genreValue = Object.values(data) as GenreObj[];
         this.homepageInitial = data as HomepageInitial;
+        setTimeout(() => {
+          this.refreshSliders();
+        }, 100);
       }
+
+      console.log(this.order);
+      console.log(this.homepageInitial);
     }, error => {
       console.log('ERROR GETTING DATA');
       console.log(error);
@@ -40,7 +52,7 @@ export class HomePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.refreshSliders();
+    
   }
 
   refreshSliders() {

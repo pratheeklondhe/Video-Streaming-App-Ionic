@@ -24,7 +24,7 @@
       <form #regForm="ngForm">
 
         <div class="input-group mb-3">
-          <input min="6" max="15" ngModel required type="text" name="userName" 
+          <input min=6 max=15 ngModel required type="text" name="userName" 
           class="form-control" 
           placeholder="Name (Atleast 6 characters)" aria-label="Username" 
           aria-describedby="basic-addon1">
@@ -40,9 +40,9 @@
         </div>
 
         <div class="input-group mb-3">
-          <input ngModel min="3" required type="password" name="password" 
+          <input ngModel min=6 required type="password" name="password" 
           class="form-control" 
-          placeholder="Password (Min 3 chars)" aria-label="Password"
+          placeholder="Password (Atleast 6 chars)" aria-label="Password"
           aria-describedby="basic-addon1">
           <div class="input-group-prepend">
             <span class="input-group-text login-input-side-badges" 

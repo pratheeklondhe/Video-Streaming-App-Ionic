@@ -8,9 +8,9 @@ import { LoginServiceService } from '../../login-service.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage  {
+export class RegisterPage {
 
-  @ViewChild('regForm', { static: true})regFormComp: NgForm = new NgForm([], []);
+  @ViewChild('regForm', { static: true }) regFormComp: NgForm = new NgForm([], []);
 
   isLoader = false;
 
@@ -35,6 +35,7 @@ export class RegisterPage  {
       console.log(error);
       this.toastPreset(error.error.message, false);
       this.isLoader = false;
+      this.regFormComp.reset();
     });
   }
 
@@ -43,7 +44,7 @@ export class RegisterPage  {
       message: msg,
       duration: 2000,
       keyboardClose: true,
-      mode: "md"
+      mode: 'md'
     });
     toast.present();
     toast.onWillDismiss().then(() => {

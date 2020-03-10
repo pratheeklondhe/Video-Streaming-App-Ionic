@@ -32,6 +32,8 @@ export class GenreSliderComponent implements OnInit {
     updateOnWindowResize: true,
     grabCursor: true,
     freeMode: true,
+    preloadImages: true,
+    updateOnImagesReady: true,
     // loop: true,
     // Responsive breakpoints
     breakpoints: {

@@ -36,7 +36,9 @@ export class IndividualGenrePage implements OnInit {
     this.homeService.getGenreOfCategory(this.genre.category[0], this.genre.genreId).subscribe(data => {
       this.similarGenres = data as GenreObj[];
       if (this.similarGenres && this.similarGenres.length) {
-
+        setTimeout(() => {
+          this.refreshSliders();
+        }, 100);
       } else {
         console.log('No Similar Genres available');
       }
@@ -53,7 +55,9 @@ export class IndividualGenrePage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.refreshSliders();
+    setTimeout(() => {
+      this.refreshSliders();
+    }, 200);
   }
 
   refreshSliders() {
