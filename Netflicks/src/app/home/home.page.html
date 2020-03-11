@@ -2,8 +2,17 @@
 
 <ion-content>
 
-
+<div *ngIf="homepageInitial">
+  <div *ngFor="let key of homepageInitial.genreOrder;let i=index">
     <net-genre-slider
+      [title] = "key?.value"
+      [genreList] = "homepageInitial[key?.key]"
+      (genreSelected) = "genreSelected($event)"
+      ></net-genre-slider>
+  </div>
+</div>
+
+    <!-- <net-genre-slider
       [title] = "'Trending'"
       [genreList] = "homepageInitial.TRENDING"
       (genreSelected) = "genreSelected($event)"
@@ -17,6 +26,6 @@
       <net-genre-slider
       [title] = "'Adventure'"
       [genreList] = "homepageInitial.ADVENTURE"
-      (genreSelected) = "genreSelected($event)"></net-genre-slider>
+      (genreSelected) = "genreSelected($event)"></net-genre-slider> -->
 
 </ion-content>

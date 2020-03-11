@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { HomeService } from './home.service';
-import { HomepageInitial } from './entity/initial-entity';
+import { HomepageInitial, GenreObj } from './entity/initial-entity';
 import { Router, NavigationExtras } from '@angular/router';
 import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.component';
 
@@ -12,15 +12,20 @@ import { GenreSliderComponent } from '../genre-slider/genre-slider/genre-slider.
 export class HomePage implements OnInit {
   @ViewChildren(GenreSliderComponent) genreSliderComponent: QueryList<GenreSliderComponent>;
 
-  homepageInitial: HomepageInitial = new HomepageInitial();
+  homepageInitial = new HomepageInitial();
   numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+
   constructor(private homeService: HomeService, private router: Router) {
   }
 
   getInitialData() {
+    setTimeout(() => {
+      this.refreshSliders();
+    }, 0);
     this.homeService.getInitialData().subscribe(data => {
       if (data) {
         this.homepageInitial = data as HomepageInitial;
+        this.sliderInitialize();
       }
     }, error => {
       console.log('ERROR GETTING DATA');
@@ -33,20 +38,33 @@ export class HomePage implements OnInit {
   }
 
   genreSelected(navigationExtras: NavigationExtras) {
-    // navigationExtras.skipLocationChange = true;
-    // navigationExtras.replaceUrl = true;
-    console.log(navigationExtras);
     this.router.navigate(['/genre/' + navigationExtras.state.genre.genreId], navigationExtras);
-  }
-
-  ionViewDidEnter() {
-    this.refreshSliders();
   }
 
   refreshSliders() {
     this.genreSliderComponent.forEach(slider => {
       slider.updateSlider();
     });
+  }
+
+  stopAutoPlayOfAll() {
+    this.genreSliderComponent.forEach(slider => {
+      slider.slider.stopAutoplay();
+    });
+  }
+
+  sliderInitialize() {
+    setTimeout(() => {
+          this.refreshSliders();
+          this.stopAutoPlayOfAll();
+          setTimeout(() => {
+            this.slidesPlayLogic();
+          }, 200);
+        }, 100);
+  }
+
+  slidesPlayLogic() {
+    this.genreSliderComponent.toArray()[0].slider.startAutoplay();
   }
 
 }

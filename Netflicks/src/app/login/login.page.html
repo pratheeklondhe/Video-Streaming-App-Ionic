@@ -21,7 +21,8 @@
           </div>
         </div>
 
-        <button id="gradient" (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid" type="button" class="btn btn-dark btn-block ion-no-padding display-flex align-items-center flex-direction-column">
+        <button id="gradient1" (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid" type="button" 
+        class="btn btn-dark btn-block ion-no-padding display-flex align-items-center flex-direction-column height-2rem">
           <div class="login-button-size">
             <div *ngIf="!isLoader; else elseBlock">
               Log In
@@ -41,7 +42,7 @@
     
   </div>
   <div (click)="registerModal()"
-  class="custom-anchor display-flex align-items-center flex-direction-column customFooter">
-  Sign Up?
+  class="custom-anchor display-flex align-items-center justify-content-center customFooter cursor-pointer">
+  <div>Sign Up?</div>
   </div>
 </ion-content>
