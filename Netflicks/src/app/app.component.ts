@@ -18,7 +18,7 @@ export class AppComponent {
   darkModeColor = '#231f20';
   lightModeColor = '#fff';
   role: string;
-
+  showSplash = true;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -34,6 +34,10 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.backgroundColorByHexString(this.lightModeColor);
       this.splashScreen.hide();
+
+      setTimeout(() => {
+        this.showSplash = false;
+      }, 6000);
 
       this.platform.backButton.subscribeWithPriority(0 , () => {
         if (this.router.url !== '/home') {
