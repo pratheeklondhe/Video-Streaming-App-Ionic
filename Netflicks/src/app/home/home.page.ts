@@ -19,20 +19,14 @@ export class HomePage implements OnInit {
   }
 
   getInitialData() {
-    console.log(this.homepageInitial);
     setTimeout(() => {
-          this.refreshSliders();
-        }, 0);
+      this.refreshSliders();
+    }, 0);
     this.homeService.getInitialData().subscribe(data => {
       if (data) {
-        // this.genreKey = Object.keys(data);
-        // this.genreValue = Object.values(data) as GenreObj[];
         this.homepageInitial = data as HomepageInitial;
-        setTimeout(() => {
-          this.refreshSliders();
-        }, 100);
+        this.sliderInitialize();
       }
-
     }, error => {
       console.log('ERROR GETTING DATA');
       console.log(error);
@@ -44,19 +38,33 @@ export class HomePage implements OnInit {
   }
 
   genreSelected(navigationExtras: NavigationExtras) {
-    // navigationExtras.skipLocationChange = true;
-    // navigationExtras.replaceUrl = true;
-    console.log(navigationExtras);
     this.router.navigate(['/genre/' + navigationExtras.state.genre.genreId], navigationExtras);
-  }
-
-  ionViewDidEnter() {
   }
 
   refreshSliders() {
     this.genreSliderComponent.forEach(slider => {
       slider.updateSlider();
     });
+  }
+
+  stopAutoPlayOfAll() {
+    this.genreSliderComponent.forEach(slider => {
+      slider.slider.stopAutoplay();
+    });
+  }
+
+  sliderInitialize() {
+    setTimeout(() => {
+          this.refreshSliders();
+          this.stopAutoPlayOfAll();
+          setTimeout(() => {
+            this.slidesPlayLogic();
+          }, 200);
+        }, 100);
+  }
+
+  slidesPlayLogic() {
+    this.genreSliderComponent.toArray()[0].slider.startAutoplay();
   }
 
 }

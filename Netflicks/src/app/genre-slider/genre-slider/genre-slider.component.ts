@@ -19,8 +19,26 @@ export class GenreSliderComponent implements OnInit {
 
   skeletonList = [1, 2, 3, 4, 5, 6, 7, 8];
   sliderOpts = {
+  autoplay: {
+    delay: 4000,
+    stopOnLastSlide: false,
+    disableOnInteraction: false,
+    reverseDirection: false,
+  },
+  lazy: {
+    loadPrevNext: false,
+  },
+  keyboard: {
+    enabled: true,
+    onlyInViewport: false,
+  },
+  // cssMode: true,
+  // effect: 'coverflow',
+  // coverflowEffect: {
+  //   rotate: 30,
+  //   slideShadows: true,
+  // },
     speed: 400,
-    // effect: 'flip',
     // spaceBetween: 25,
     // slidesPerColumn: 1,
     // resistance: false,
@@ -77,7 +95,18 @@ export class GenreSliderComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
+  slidePlay() {
+    //     setInterval(async () => {
+      this.slider.startAutoplay();
+    //   if (await this.slider.isEnd()) {
+    //     setTimeout(() => {
+    //       this.slider.slideTo(0);
+    //     }, 1000);
+    //   }
+    // }, 2000);
+  }
 
   cardClicked(genre: GenreObj) {
     const navigationExtras: NavigationExtras = {

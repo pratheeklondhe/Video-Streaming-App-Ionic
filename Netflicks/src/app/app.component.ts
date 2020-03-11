@@ -35,6 +35,11 @@ export class AppComponent {
       this.statusBar.backgroundColorByHexString(this.lightModeColor);
       this.splashScreen.hide();
 
+      this.platform.backButton.subscribeWithPriority(0 , () => {
+        console.log(this.router.getCurrentNavigation());
+        alert(this.router.getCurrentNavigation());
+      });
+
       this.toggleTheme();
       this.registerEvent();
     });

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { LoginServiceService } from './login-service.service';
 import { Router } from '@angular/router';
-import { Events, ModalController } from '@ionic/angular';
+import { Events, ModalController, ToastController } from '@ionic/angular';
 import { RegisterPage } from './register/register/register.page';
 
-      
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -17,13 +17,13 @@ export class LoginPage implements OnInit {
 
   constructor(private loginServiceService: LoginServiceService,
     private router: Router, private event: Events,
-    private modalController: ModalController) {}
+    private modalController: ModalController, private toastController: ToastController) { }
 
 
 
   onSubmit(loginForm: NgForm) {
     this.isLoader = true;
-    this.loginServiceService.userLogin(loginForm.form.value).subscribe(data =>{
+    this.loginServiceService.userLogin(loginForm.form.value).subscribe(data => {
       this.storeUserToken(data);
       if (data && data['body']['role'] === 'USER') {
         this.reportLogin();
@@ -34,14 +34,16 @@ export class LoginPage implements OnInit {
         this.router.navigate(['/admin']);
       }
     }, error => {
-      loginForm.reset();
+
+      this.toastPreset('Invalid Credentials. Please Try Again');
+      // loginForm.reset();
       this.loginServiceService.clearSessionStorage();
       this.isLoader = false;
     });
   }
 
   publishEvent(role: string) {
-    this.event.publish('role', {role});
+    this.event.publish('role', { role });
   }
 
   ionViewWillEnter() {
@@ -55,8 +57,19 @@ export class LoginPage implements OnInit {
   test() {
     this.loginServiceService.test().subscribe(data => {
 
-    })
+    });
   }
+
+  async toastPreset(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      keyboardClose: true,
+      mode: 'md'
+    });
+    toast.present();
+  }
+
 
   ngOnInit() {
   }
@@ -90,7 +103,7 @@ export class LoginPage implements OnInit {
     //   console.log('Hey mahn');
     // });
     await modal.present();
-    
+
   }
 
 }
