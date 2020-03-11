@@ -36,8 +36,9 @@ export class AppComponent {
       this.splashScreen.hide();
 
       this.platform.backButton.subscribeWithPriority(0 , () => {
-        console.log(this.router.getCurrentNavigation());
-        alert(this.router.getCurrentNavigation());
+        if (this.router.url !== '/home') {
+          this.router.navigate([this.router.url]);
+        }
       });
 
       this.toggleTheme();
