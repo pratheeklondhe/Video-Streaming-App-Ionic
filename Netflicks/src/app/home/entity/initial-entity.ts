@@ -35,6 +35,9 @@ export class GenreObj {
     description: string;
     displayImg: string;
     category: string[] = [];
+    isSeries: boolean;
+    language: string;
+    year: string;
 }
 
 export class GenreFile extends GenreObj {

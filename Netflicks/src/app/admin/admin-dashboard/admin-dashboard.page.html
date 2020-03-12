@@ -12,7 +12,7 @@
   </ion-item>
 
   <ion-card *ngFor="let genre of genreList; let i=index" class="card-shadow">
-    <ion-card-header (click)="presentModal(genre)">
+    <ion-card-header (click)="presentModal(true, genre)">
       <ion-card-title class="font-weight-bold">{{genre?.genreId}}
         <ion-icon name="arrow-forward" float-right></ion-icon>
       </ion-card-title>
@@ -23,5 +23,12 @@
        {{genre?.category}}
     </ion-card-content>
   </ion-card>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="presentModal(false)">
+      <ion-icon name="md-add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GenreObj, GenreFile } from 'src/app/home/entity/initial-entity';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { AdminService } from '../admin.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-genre-edit-modal',
@@ -12,13 +12,23 @@ import { NgForm } from '@angular/forms';
 export class GenreEditModalPage implements OnInit {
 
   @Input() genre: GenreObj;
+  @Input() isEdit: boolean;
+  @Input() categoryList: string[] = [];
+
+  SERVER_URL = 'http://localhost:3000/api/genre/uploadgenre';
+  languages = ['English', 'Hindi', 'Kannada'];
   genreObj: GenreFile = new GenreFile();
+  uploadForm: FormGroup;
+  selectedFile = null;
 
-  constructor(private modalController: ModalController,
-    private adminService: AdminService, private alertController: AlertController) { }
 
-  ngOnInit() { 
-    this.getGenre();
+  constructor(private modalController: ModalController, private adminService: AdminService,
+              private alertController: AlertController, private toastController: ToastController) { }
+
+  ngOnInit() {
+    if (this.isEdit) {
+      this.getGenre();
+    }
   }
 
   getGenre() {
@@ -36,25 +46,28 @@ export class GenreEditModalPage implements OnInit {
   }
 
   onSubmit(genreForm: NgForm) {
-    this.presentAlertConfirm();
+    if (this.isEdit) {
+      this.presentAlertConfirm(`Are You Sure To Update <strong>${this.genre.title}</strong>?`);
+    } else {
+      this.presentAlertConfirm(`Are You Sure To Add New Genre?`);
+    }
     console.log(this.genreObj);
   }
 
-  
+
   updateGenre() {
-    delete this.genreObj._id;
-    delete this.genreObj['__v'];
+    this.deleteUnwantedProps();
     this.adminService.updateGenreByGenreId(this.genreObj).subscribe(data => {
       console.log(data);
     }, error => {
       console.log(error);
-    })
+    });
   }
-  
-  async presentAlertConfirm() {
+
+  async presentAlertConfirm(msg: string) {
     const alert = await this.alertController.create({
       header: 'Alert!',
-      message: `Are You Sure To Update <strong>${this.genre.title}</strong>?`,
+      message: msg,
       buttons: [
         {
           text: 'Cancel',
@@ -66,11 +79,109 @@ export class GenreEditModalPage implements OnInit {
         }, {
           text: 'Yes',
           handler: () => {
-            this.updateGenre();
+            if (this.isEdit) {
+              this.updateGenre();
+            } else {
+              this.addGenre();
+            }
           }
         }
       ]
     });
     await alert.present();
+  }
+
+  addGenre() {
+    this.deleteUnwantedProps();
+    this.genreObj.isSeries = false;
+    console.log(this.genreObj);
+    this.adminService.addGenre(this.genreObj).subscribe(data => {
+      this.postGenreCreationTasks(data);
+      this.onSubmitVideo();
+    }, error => {
+      alert('Failure ' + error.message);
+      this.toastPresent(error.message);
+    });
+  }
+
+
+
+
+  private postGenreCreationTasks(data: any) {
+    const ret = data as any;
+    const msg = ret ? 'Genre Saved Successfully' : 'Something Went Wrong in adding Genre. No Response msg received from server! Strange';
+    this.toastPresent(msg + ' .Initiating File Upload.');
+  }
+
+  onFileSelect(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
+  async onSubmitVideo() {
+    const payload = new FormData();
+    payload.append('genrevideo', this.selectedFile, this.selectedFile.name);
+
+    const options = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    };
+    const toast = await this.presentToastWithOptions('Uploading Genre Video....');
+    toast.present();
+    this.adminService.uploadFlie(payload, options).subscribe(data => {
+      this.conveyUser(toast, data);
+    }, err => {
+      this.conveyUser(toast, err);
+    });
+  }
+
+
+  private conveyUser(toast: HTMLIonToastElement, data: any) {
+    toast.dismiss();
+    const msg = data && data.message ? data.message : 'Something Went Wrong In Genre Upload.';
+    setTimeout(() => {
+      this.toastPresent(msg);
+      setTimeout(() => {
+        this.selectedFile = null;
+        this.modalDismiss();
+      }, 500);
+    }, 500);
+  }
+
+  deleteUnwantedProps() {
+    delete this.genreObj._id;
+    delete this.genreObj['__v'];
+  }
+
+  async toastPresent(msg: string) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: 2000,
+      keyboardClose: true,
+      mode: 'md'
+    });
+    toast.present();
+  }
+
+    async presentToastWithOptions(msg: string) {
+    return await this.toastController.create({
+      message: msg,
+      keyboardClose: true,
+      buttons: [
+        {
+          side: 'start',
+          icon: 'star',
+          text: 'Uploading...',
+          handler: () => {
+            console.log('Favorite clicked');
+          }
+        }
+      ]
+    });
+  }
+
+  ionViewWillEnter() {
+    this.selectedFile = null;
   }
 }

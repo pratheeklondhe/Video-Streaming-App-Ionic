@@ -54,8 +54,8 @@ export class DataService {
   getBaseUrl(): string {
     let baseUrl = window.localStorage.getItem('baseUrl');
     baseUrl = baseUrl ? baseUrl : 'http://localhost:3000/api/';
-    // return baseUrl;
-    return 'https://fast-wildwood-48042.herokuapp.com/api/';
+    return baseUrl;
+    // return 'https://fast-wildwood-48042.herokuapp.com/api/';
   }
 
   rest_get_mp4(url) {
@@ -64,6 +64,11 @@ export class DataService {
       
     }
     return this.http.get(this.getBaseUrl() + url, {responseType: 'text'});
+  }
+
+
+  rest_mulipart_form(url: string, payload: any, options: any) {
+    return this.http.post(this.getBaseUrl() + url, payload);
   }
 
 }

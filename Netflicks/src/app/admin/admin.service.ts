@@ -26,4 +26,12 @@ export class AdminService {
   updateGenreByGenreId(genre: GenreObj) {
     return this.dataService.rest_post('genre/updategenre', genre);
   }
+
+  addGenre(genre: GenreObj) {
+    return this.dataService.rest_post('genre/addgenre', genre);
+  }
+
+  uploadFlie(payLoad, options) {
+    return this.dataService.rest_mulipart_form('genre/uploadgenre', payLoad, options);
+  }
 }

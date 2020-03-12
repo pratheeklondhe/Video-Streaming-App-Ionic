@@ -16,9 +16,9 @@ export class AdminDashboardPage implements OnInit {
   genreList: GenreObj[] = [];
 
   constructor(private adminService: AdminService,
-    private modalController: ModalController) { }
+              private modalController: ModalController) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.getCategoryList();
   }
 
@@ -26,29 +26,29 @@ export class AdminDashboardPage implements OnInit {
     this.genreList = [];
     this.adminService.getGenreListByCategory({ selectedCategory: this.selectedCategory })
       .subscribe(data => {
-        this.genreList = <GenreObj[]>data;
+        this.genreList = data as GenreObj[];
     });
   }
 
   getCategoryList() {
     this.categoryList = [];
     this.adminService.getCategories().subscribe(data => {
-      this.categoryList = <string[]>data;
+      this.categoryList = data as string[];
     }, error => {
       console.log('Error retreiving Category List');
-    })
+    });
   }
 
-  async presentModal(genre: GenreObj) {
+  async presentModal(isEdit: boolean, genre?: GenreObj) {
     const modal = await this.modalController.create({
       component: GenreEditModalPage,
       componentProps: {
-        genre: genre
+        genre,
+        isEdit,
+        categoryList: this.categoryList
       }
     });
     await modal.present();
   }
-
-
 
 }

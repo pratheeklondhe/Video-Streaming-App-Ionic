@@ -37,7 +37,7 @@ export class AppComponent {
 
       setTimeout(() => {
         this.showSplash = false;
-      }, 6000);
+      }, 3000);
 
       this.platform.backButton.subscribeWithPriority(0 , () => {
         if (this.router.url !== '/home') {
