@@ -34,4 +34,11 @@ export class AdminService {
   uploadFlie(payLoad, options) {
     return this.dataService.rest_mulipart_form('genre/uploadgenre', payLoad, options);
   }
+
+  deleteGenre(genreId: string, fileName: string) {
+    const params: HttpParams = new HttpParams()
+    .set('genreId', genreId)
+    .set('genreTitle', fileName);
+    return this.dataService.rest_get('retreivegenre/removegenre', params);
+  }
 }

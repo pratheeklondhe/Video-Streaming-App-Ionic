@@ -12,11 +12,15 @@
   </ion-item>
 
   <ion-card *ngFor="let genre of genreList; let i=index" class="card-shadow">
-    <ion-card-header (click)="presentModal(true, genre)">
-      <ion-card-title class="font-weight-bold">{{genre?.genreId}}
-        <ion-icon name="arrow-forward" float-right></ion-icon>
+    <ion-card-header>
+      <ion-card-title class="font-weight-bold">{{genre?.title}}
+        <div class="ion-float-right">
+          <ion-icon (click)="deleteConfirmation(genre)" name="trash"  class="font-size-1-5rem"></ion-icon>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <ion-icon (click)="presentModal(true, genre)" name="arrow-forward" class="font-size-1-5rem"></ion-icon>
+        </div>
       </ion-card-title>
-      <ion-card-subtitle class="font-weight-bold">{{genre?.title}}</ion-card-subtitle>
+      <ion-card-subtitle class="font-weight-bold">{{genre?.genreId}}</ion-card-subtitle>
     </ion-card-header>
   
     <ion-card-content class="font-weight-bold">
