@@ -54,6 +54,9 @@ export class AdminDashboardPage implements OnInit {
         categoryList: this.categoryList
       }
     });
+    modal.onDidDismiss().then(() => {
+      this.getGenre();
+    });
     await modal.present();
   }
 

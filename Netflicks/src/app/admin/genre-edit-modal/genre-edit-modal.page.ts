@@ -59,7 +59,11 @@ export class GenreEditModalPage implements OnInit {
     this.deleteUnwantedProps();
     this.adminService.updateGenreByGenreId(this.genreObj).subscribe(data => {
       console.log(data);
+      const msg = data ? 'Updated Genre Successfully' : 'Something Went Wrong while updating genre. Try Again.';
+      this.toastPresent(msg);
+      this.modalDismiss();
     }, error => {
+      this.toastPresent(error.message);
       console.log(error);
     });
   }
