@@ -98,6 +98,7 @@ export class AboutPage {
 
   reportPVisit() {
     this.aboutService.reportPVisit().subscribe();
+    window.open('https://portfolio-pratheek.firebaseapp.com');
   }
 
 }
