@@ -30,7 +30,7 @@
         <ion-list class="ion-no-padding" *ngIf="role === 'USER'">
           <ion-menu-toggle auto-hide="true">
             <ion-item [routerLink]="['/home']" class="cursor-pointer">
-              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-icon slot="start" name="home" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Home
               </ion-label>
@@ -57,7 +57,7 @@
 
           <ion-menu-toggle auto-hide="true">
             <ion-item (click)="logout()" class="cursor-pointer" [routerLink]="['']" routerDirection="backward">
-              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-icon slot="start" name="log-out" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Logout
               </ion-label>
@@ -69,7 +69,7 @@
         <ion-list class="ion-no-padding" *ngIf="role === 'ADMIN'">
           <ion-menu-toggle auto-hide="true">
             <ion-item [routerLink]="['/admin']" class="cursor-pointer">
-              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-icon slot="start" name="home" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
                 Home
               </ion-label>
@@ -87,9 +87,9 @@
 
           <ion-menu-toggle auto-hide="true">
             <ion-item (click)="logout()" class="cursor-pointer" [routerLink]="['']" routerDirection="backward">
-              <ion-icon slot="start" name="timer" class="poster-dashboard-icons"></ion-icon>
+              <ion-icon slot="start" name="log-out" class="poster-dashboard-icons"></ion-icon>
               <ion-label>
-                Dash
+                Logout
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

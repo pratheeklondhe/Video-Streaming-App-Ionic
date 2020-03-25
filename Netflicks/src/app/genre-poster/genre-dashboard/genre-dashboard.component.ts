@@ -12,7 +12,7 @@ export class GenreDashboardComponent implements OnInit {
   @Input() description: string;
   @Output() watchNow: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  isDescriptionExpanded = false;
+  isDescriptionExpanded = true;
 
   constructor(private toastController: ToastController) { }
 

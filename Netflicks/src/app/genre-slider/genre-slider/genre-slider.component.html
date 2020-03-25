@@ -13,8 +13,8 @@
       <ion-slide *ngFor="let genre of genreList">
     
         <ion-card class="slide-card" (click)="cardClicked(genre)">
-          <img [src]="genre?.displayImg" 
-          alt="Loading.."/>
+          <img class="loading" [src]="genre?.displayImg" 
+          />
           </ion-card>
     
       </ion-slide>
