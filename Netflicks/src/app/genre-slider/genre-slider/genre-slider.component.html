@@ -1,33 +1,44 @@
-<div> 
+<div>
   <ion-row class="ion-no-padding slider-row">
     <ion-col class="ion-align-self-center ion-text-left ion-no-padding slider-col">
-       <ion-text class="slider-text">
+      <ion-text class="slider-text">
         {{ title }}
-        </ion-text>
+      </ion-text>
     </ion-col>
   </ion-row>
 
-<ion-slides #slider [options]="sliderOpts" mode="md">
-  <div *ngIf="genreList && genreList.length;then content else skeleton"></div>
+  <ion-slides #slider [options]="sliderOpts" mode="md">
+    <div *ngIf="genreList && genreList.length;then content else skeleton"></div>
     <ng-template #content>
       <ion-slide *ngFor="let genre of genreList">
-    
-        <ion-card class="slide-card" (click)="cardClicked(genre)">
-          <img class="loading" [src]="genre?.displayImg" 
-          />
-          </ion-card>
-    
+
+        <ion-card class="slide-card wrapper" (click)="cardClicked(genre)">
+          
+          <div class="loader-animate">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+          </div>
+
+          <div class="img_cls">
+            <img [src]="genre?.displayImg" />
+          </div>
+
+        </ion-card>
+
       </ion-slide>
     </ng-template>
 
     <ng-template #skeleton>
-      <ion-slide *ngFor="let genre of skeletonList">    
+      <ion-slide *ngFor="let genre of skeletonList">
         <ion-card class="slide-card">
-          <img src="../../assets/images/loading_poster.jpg"/>
+          <img src="../../assets/images/loading_poster.jpg" />
         </ion-card>
-    
+
       </ion-slide>
     </ng-template>
 
-</ion-slides>
+  </ion-slides>
 </div>
