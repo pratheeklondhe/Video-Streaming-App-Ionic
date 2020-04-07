@@ -73,6 +73,10 @@ ion-slide {
     opacity: 1;
 }
 
+.custom-color {
+    border: 1px solid var(--net-darker-red-color);
+}
+
 // Animation
 .spinner {
 //   margin: 100px auto 0;

@@ -33,8 +33,17 @@
 
     <ng-template #skeleton>
       <ion-slide *ngFor="let genre of skeletonList">
-        <ion-card class="slide-card">
-          <img src="../../assets/images/loading_poster.jpg" />
+        <ion-card class="slide-card custom-color">
+
+          <div class="loader-animate">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+          </div>
+
+          <!-- <img src="../../assets/images/loading_poster.jpg" /> -->
         </ion-card>
 
       </ion-slide>
