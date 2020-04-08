@@ -12,14 +12,10 @@
     <ng-template #content>
       <ion-slide *ngFor="let genre of genreList">
 
-        <ion-card class="slide-card wrapper" (click)="cardClicked(genre)">
+        <ion-card class="slide-card wrapper custom-color" (click)="cardClicked(genre)">
           
           <div class="loader-animate">
-            <div class="spinner">
-              <div class="bounce1"></div>
-              <div class="bounce2"></div>
-              <div class="bounce3"></div>
-            </div>
+            Loading...
           </div>
 
           <div class="img_cls">
@@ -33,15 +29,9 @@
 
     <ng-template #skeleton>
       <ion-slide *ngFor="let genre of skeletonList">
-        <ion-card class="slide-card custom-color">
+        <ion-card class="slide-card custom-color flex-center">
 
-          <div class="loader-animate">
-            <div class="spinner">
-              <div class="bounce1"></div>
-              <div class="bounce2"></div>
-              <div class="bounce3"></div>
-            </div>
-          </div>
+          Loading...
 
           <!-- <img src="../../assets/images/loading_poster.jpg" /> -->
         </ion-card>
