@@ -22,7 +22,7 @@
   (watchNow)="watchNow()"
   ></net-genre-dashboard>
 
-  <net-genre-slider *ngIf="similarGenres && similarGenres.length"
+  <net-genre-slider
       [title] = "'Similar'"
       [genreList] = "similarGenres"
       (genreSelected) = "genreSelected($event)"

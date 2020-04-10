@@ -20,7 +20,7 @@ export class GenrePosterComponent implements OnChanges {
 
   ngOnChanges() {
     this.url = this.getVideoUrl();
-    console.log(`ngOnChanges: ${this.url}`);
+    // console.log(`ngOnChanges: ${this.url}`);
   }
 
   playPause() {

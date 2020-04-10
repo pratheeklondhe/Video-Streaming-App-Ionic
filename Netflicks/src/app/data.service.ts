@@ -24,7 +24,7 @@ export class DataService {
   }
 
   rest_post_with_headers(url: string, body): Observable<Object> {
-    console.log(this.getBaseUrl() + " dhsjahdksahkdhsa");
+    // console.log(this.getBaseUrl() + " dhsjahdksahkdhsa");
     // let loader = this.loaderService.createBasicLoader().then(() => {});
 
     // loader.then((res) => res.present())

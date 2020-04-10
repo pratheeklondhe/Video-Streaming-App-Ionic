@@ -88,7 +88,7 @@ export class LoginPage implements OnInit {
   }
 
   ionViewDidLeave() {
-    console.log('Did Leave Login page')
+    // console.log('Did Leave Login page');
   }
 
   async registerModal() {

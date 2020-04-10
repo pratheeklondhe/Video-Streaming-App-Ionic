@@ -24,7 +24,7 @@ export class IndividualGenrePage implements OnInit {
   getRouterData() {
     if (this.router.getCurrentNavigation().extras.state) {
       this.genre = this.router.getCurrentNavigation().extras.state.genre;
-      console.log(this.genre);
+      // console.log(this.genre);
     }
   }
 
@@ -42,7 +42,7 @@ export class IndividualGenrePage implements OnInit {
       } else {
         console.log('No Similar Genres available');
       }
-      console.log(data);
+      // console.log(data);
     }, err => {
       console.log(err);
     });
