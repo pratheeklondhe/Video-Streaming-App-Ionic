@@ -13,6 +13,7 @@ export class HomePage implements OnInit {
   @ViewChildren(GenreSliderComponent) genreSliderComponent: QueryList<GenreSliderComponent>;
 
   homepageInitial = new HomepageInitial();
+  tempData = new HomepageInitial();
   numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 
   constructor(private homeService: HomeService, private router: Router) {
@@ -65,6 +66,15 @@ export class HomePage implements OnInit {
 
   slidesPlayLogic() {
     this.genreSliderComponent.toArray()[0].slider.startAutoplay();
+  }
+
+  ionViewDidLeave() {
+    this.tempData = JSON.parse(JSON.stringify(this.homepageInitial));
+    this.homepageInitial = new HomepageInitial();
+  }
+
+  ionViewWillEnter() {
+      this.homepageInitial = JSON.parse(JSON.stringify(this.tempData));
   }
 
 }
