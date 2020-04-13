@@ -52,14 +52,14 @@
 
         <button id="gradient" (click)="onSubmit(regForm)" [disabled]="regForm.invalid" 
         type="button" 
-        class="btn btn-dark btn-block ion-no-padding display-flex align-items-center height-2rem
+        class="btn btn-dark btn-block ion-no-padding display-flex align-items-center justify-content-center height-2rem
         flex-direction-column">
           <div class="login-button-size">
             <div *ngIf="!isLoader; else elseBlock">
               Register
             </div>
             <ng-template #elseBlock>
-              <ion-spinner name="lines" class="login-button-size"></ion-spinner>
+              <ion-spinner name="lines" class="login-button-size display-flex"></ion-spinner>
             </ng-template>
           </div>
         </button>
