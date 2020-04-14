@@ -13,6 +13,7 @@ import { ThemeService } from './theme.service';
 import { AuthGuard } from './route-guard/auth-guard.guard';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { environment } from '../environments/environment';
     SplashScreen,
     ThemeService,
     AuthGuard,
+    Insomnia,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],

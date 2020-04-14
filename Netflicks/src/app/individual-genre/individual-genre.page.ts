@@ -67,6 +67,8 @@ export class IndividualGenrePage implements OnInit {
   }
 
   routeToHome() {
+    this.genrePosterComponent.allowSleep();
+
     this.router.navigateByUrl('/home');
   }
 
@@ -76,6 +78,10 @@ export class IndividualGenrePage implements OnInit {
 
   watchNow() {
     this.genrePosterComponent.playPause();
+  }
+
+  ionViewDidLeave() {
+    this.genrePosterComponent.allowSleep();
   }
 
 }

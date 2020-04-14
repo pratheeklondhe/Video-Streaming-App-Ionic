@@ -77,9 +77,9 @@
 }
 
 .login-input-side-badges {
-        font-size: inherit;
-        font-weight: bolder;
-        color: var(--net-darker-red-color);
+        font-size: inherit !important;
+        font-weight: bolder !important;
+        color: var(--net-darker-red-color) !important;
 }
 
 .about-animation-background-color {
