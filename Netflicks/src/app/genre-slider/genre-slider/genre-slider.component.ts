@@ -118,6 +118,7 @@ export class GenreSliderComponent implements OnInit {
   }
 
   updateSlider() {
+    console.log("HERe");
     this.slider.update();
     this.slider.updateAutoHeight();
   }
